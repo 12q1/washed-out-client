@@ -2,9 +2,9 @@
 
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { ApolloClient, Http} from 'apollo-client-preset'
 import SignUp from './screens/SignUp';
 import styles from './App.styles';
+import store from './store'
 
 export default class ShatApp extends Component {
 
