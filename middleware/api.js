@@ -1,3 +1,4 @@
+import API from '../src/signup';
 // middleware/api.js
 import API from '../lib/api';
 

@@ -1,13 +1,12 @@
 // screens/SignUp.js
 
 import React, { Component } from 'react';
-import { View, Text, TouchableHighlight, KeyboardAvoidingView, } from 'react-native';
+import { View, Text, TouchableHighlight, KeyboardAvoidingView } from 'react-native';
 import t from 'tcomb-form-native';
 import Person, { formOptions } from '../models/Person';
-
 import styles from './SignUp.styles';
 
-export default class SignUp extends Component {
+ export default class SignUp extends Component {
     constructor(props) {
         super(props);
 
@@ -46,7 +45,7 @@ export default class SignUp extends Component {
                 <KeyboardAvoidingView
                     behavior="padding"
                     style={styles.container}>
-                    <Text style={styles.title}>Sign up for Washed Out</Text>
+                    <Text style={styles.title}>Sign up for Washed-Out</Text>
                     <Form
                         ref="form"
                         type={Person}
@@ -57,7 +56,7 @@ export default class SignUp extends Component {
                     <TouchableHighlight
                         style={styles.button}
                         onPress={this.onSubmit}
-                        underlayColor='#99d9f4'
+                        underlayColor='black'
                     >
                         <Text style={styles.buttonText}>Sign up</Text>
                     </TouchableHighlight>
@@ -66,3 +65,5 @@ export default class SignUp extends Component {
         );
     }
 }
+
+    
