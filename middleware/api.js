@@ -1,4 +1,6 @@
 import API from '../src/signup';
+// middleware/api.js
+import API from '../lib/api';
 
 // The CALL_API action
 export const CALL_API = 'CALL_API';
