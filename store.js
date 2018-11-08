@@ -1,8 +1,7 @@
-import { createStore, combineReducers } from 'redux'
-import reducers from './reducers'
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import reducers from "./reducers";
+import ReduxThunk from "redux-thunk";
 
-const reducer = combineReducers(Object.assign({}, reducers))
+const enhancer = compose(applyMiddleware(ReduxThunk));
 
-const store = createStore(reducer)
-
-export default store
+export default createStore(reducers, enhancer);

@@ -1,69 +1,69 @@
-// screens/SignUp.js
+import React from "react";
+import { gql } from "apollo-boost";
+import t from "tcomb-form-native";
+import User, { formOptions } from "../models/User";
+import styles from "./SignUp.styles";
+import { Mutation } from "react-apollo";
+import {
+  View,
+  Text,
+  TouchableHighlight,
+  KeyboardAvoidingView
+} from "react-native";
 
-import React, { Component } from 'react';
-import { View, Text, TouchableHighlight, KeyboardAvoidingView } from 'react-native';
-import t from 'tcomb-form-native';
-import User, { formOptions } from '../models/User';
-import styles from './SignUp.styles';
-
- export default class SignUp extends Component {
-    constructor(props) {
-        super(props);
-
-        this.onChange = this.onChange.bind(this)
-        this.onSubmit = this.onSubmit.bind(this);
-        this.state = { newUser: null }
+const SIGN_UP = gql`
+  mutation SignUp($fullName: String!, $email: String!, $password: String!) {
+    signUp(fullName: $fullName, email: $email, password: $password) {
+      user {
+        id
+      }
     }
+  }
+`;
 
-    componentDidMount() {
-        // focus on the "name" field
-        this.refs.form.getComponent('name').refs.input.focus();
-    }
+export default function SignUp(props) {
+  const Form = t.form.Form;
+  return (
+    <Mutation mutation={SIGN_UP}>
+      {(signUp, { data }) => (
+        <View style={styles.container}>
+          <KeyboardAvoidingView behavior="padding" style={styles.container}>
+            <Text style={styles.title}>Sign up for Washed Out</Text>
+            <Form
+              ref="form"
+              type={User}
+              options={formOptions}
+              value={props.newUser}
+              onChange={props.onChange}
+            />
 
-    onSubmit() {
-        const { form } = this.refs;
-        const newUser = form.getValue();
-        if (!newUser) return;
-        console.log(newUser);
-        this.clearForm();
-    }
+            <TouchableHighlight
+              style={styles.button}
+              onPress={async e => {
+                e.preventDefault();
 
-    clearForm() {
-        this.setState({ newUser: null });
-    }
+                signUp({
+                  variables: {
+                    fullName: props.newUser.fullName,
+                    email: props.newUser.email,
+                    password: props.newUser.password
+                  }
+                })
+                  .then(res => {
+                    console.log(res);
+                    props.clearForm();
+                  })
+                  .catch(console.error);
 
-    onChange(newUser) {
-        this.setState({ newUser });
-    }
-
-
-    render() {
-        const Form = t.form.Form;
-
-        return (
-            <View style={styles.container}>
-                <KeyboardAvoidingView
-                    behavior="padding"
-                    style={styles.container}>
-                    <Text style={styles.title}>Sign up for Washed Out</Text>
-                    <Form
-                        ref="form"
-                        type={User}
-                        options={formOptions}
-                        value={this.state.newUser}
-                        onChange={this.onChange} />
-
-                    <TouchableHighlight
-                        style={styles.button}
-                        onPress={this.onSubmit}
-                        underlayColor='black'
-                    >
-                        <Text style={styles.buttonText}>Sign up</Text>
-                    </TouchableHighlight>
-                </KeyboardAvoidingView>
-            </View>
-        );
-    }
+                console.log("hi");
+              }}
+              underlayColor="black"
+            >
+              <Text style={styles.buttonText}>Sign up</Text>
+            </TouchableHighlight>
+          </KeyboardAvoidingView>
+        </View>
+      )}
+    </Mutation>
+  );
 }
-
-    
