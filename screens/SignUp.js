@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableHighlight, KeyboardAvoidingView } from 'react-native';
 import t from 'tcomb-form-native';
-import Person, { formOptions } from '../models/Person';
+import User, { formOptions } from '../models/User';
 import styles from './SignUp.styles';
 
  export default class SignUp extends Component {
@@ -45,10 +45,10 @@ import styles from './SignUp.styles';
                 <KeyboardAvoidingView
                     behavior="padding"
                     style={styles.container}>
-                    <Text style={styles.title}>Sign up for Washed-Out</Text>
+                    <Text style={styles.title}>Sign up for Washed Out</Text>
                     <Form
                         ref="form"
-                        type={Person}
+                        type={User}
                         options={formOptions}
                         value={this.state.newUser}
                         onChange={this.onChange} />
