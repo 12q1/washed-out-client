@@ -5,9 +5,6 @@ import { USER_AUTH_ERROR } from '../actions/users/sign-in';
 export default (state = null, { type, payload }) => {
   switch (type) {
 
-    case USER_LOADED_FROM_STORAGE :
-      return payload;
-
     case USER_SIGNED_UP :
       AsyncStorage.setItem('chatUser', JSON.stringify(payload));
       return { ...payload };
