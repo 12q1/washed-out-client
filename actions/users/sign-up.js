@@ -25,7 +25,6 @@ export default (user) => {
     }
       }
     
-
 function querySignUp (user) {
     return client.query({
         query: gql`
@@ -42,3 +41,4 @@ function querySignUp (user) {
           `
       })
   }
+
