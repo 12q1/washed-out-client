@@ -9,12 +9,9 @@ import { Router, Scene } from "react-native-router-flux";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 
+// Create the apollo client
 export const client = new ApolloClient({
-  uri: "http://127.0.1.1:4000/graphql",
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json"
-  }
+  uri: "http://172.16.29.196:4000/graphql"
 });
 export default class WashedOut extends Component {
   render() {
