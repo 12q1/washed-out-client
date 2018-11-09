@@ -14,9 +14,7 @@ import {
 const SIGN_UP = gql`
   mutation SignUp($fullName: String!, $email: String!, $password: String!) {
     signUp(fullName: $fullName, email: $email, password: $password) {
-      user {
-        id
-      }
+      id
     }
   }
 `;
@@ -42,9 +40,10 @@ export default function SignUp(props) {
               onPress={async e => {
                 e.preventDefault();
 
+                console.log(SIGN_UP);
                 signUp({
                   variables: {
-                    fullName: props.newUser.fullName,
+                    fullName: props.newUser.name,
                     email: props.newUser.email,
                     password: props.newUser.password
                   }
@@ -53,7 +52,9 @@ export default function SignUp(props) {
                     console.log(res);
                     props.clearForm();
                   })
-                  .catch(console.error);
+                  .catch(error => {
+                    console.error("hello", error);
+                  });
 
                 console.log("hi");
               }}

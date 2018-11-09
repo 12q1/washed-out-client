@@ -17,14 +17,7 @@ class SignUpContainer extends Component {
   //   this.refs.form.getComponent("name").refs.input.focus();
   // }
 
-  onSubmit() {
-    const { form } = this.refs;
-    const newUser = form.getValue();
-    if (!newUser) return;
-    console.log(newUser);
-    this.props.signUp(newUser);
-    this.clearForm();
-  }
+  onSubmit() {}
 
   clearForm() {
     this.setState({ newUser: null });
@@ -39,7 +32,7 @@ class SignUpContainer extends Component {
       <SignUp
         newUser={this.state.newUser}
         onChange={this.onChange.bind(this)}
-        onSubmit={this.onSubmit.bind(this)}
+        handleSubmit={this.onSubmit.bind(this)}
         clearForm={this.clearForm.bind(this)}
       />
     );

@@ -10,7 +10,7 @@ import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 
 export const client = new ApolloClient({
-  uri: "http://127.0.1.1:4000/graphql",
+  uri: "http://172.16.29.196:4000/graphql",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json"
