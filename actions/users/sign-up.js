@@ -29,6 +29,11 @@ function querySignUp({ name, email, password }) {
       mutation SignUp($fullName: String!, $email: String!, $password: String!) {
         signUp(fullName: $fullName, email: $email, password: $password) {
           id
+          services {
+            washing
+            drying
+            ironing
+          }
         }
       }
     `
