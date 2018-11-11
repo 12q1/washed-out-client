@@ -34,7 +34,6 @@ export default class OrderForm extends Component {
     const Form = t.form.Form;
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Make an Order</Text>
         <Form
           ref="form"
           type={Order}
