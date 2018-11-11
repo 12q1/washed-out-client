@@ -65,11 +65,13 @@ export default class AccountDetails extends Component {
                   ))
                 }
               </Card>
-              <Button
-                style={{ position: "absolute", bottom: 0, left: 0 }}
-                clear
-                title='Contact'
-              />
+              <Card>
+                <Button
+                  backgroundColor="#1E90FF"
+                  clear
+                  title='Contact'
+                />
+              </Card>
             </View>
           )
         })
