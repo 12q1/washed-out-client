@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import t from "tcomb-form-native";
-import Order from "../models/Order";
+import Order, { formOptions} from "../models/Order";
 import { TouchableHighlight } from "react-native";
 
 import styles from './OrderForm.styles';
@@ -38,6 +38,7 @@ export default class OrderForm extends Component {
         <Form
           ref="form"
           type={Order}
+          options={formOptions}
           value={this.state.newOrder}
           onChange={this.onChange}
         />
