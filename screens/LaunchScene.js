@@ -6,7 +6,7 @@ import Button from "apsl-react-native-button";
 import styles from "./LaunchScene.styles";
 import { Actions } from "react-native-router-flux";
 
-// import LoginScene from './LoginScene';
+import SignIn from './SignInContainer';
 import SignUp from "./SignUpContainer";
 
 export default class LaunchScene extends Component {
@@ -21,16 +21,16 @@ export default class LaunchScene extends Component {
     }
   }
 
-  onLoginClick() {
-    this.toNext({
-      name: "Login",
-      title: "Login",
-      component: Login,
-      passProps: {
-        leftBtn: "Back"
-      }
-    });
-  }
+  // onLoginClick() {
+  //   this.toNext({
+  //     name: "Login",
+  //     title: "Login",
+  //     component: Login,
+  //     passProps: {
+  //       leftBtn: "Back"
+  //     }
+  //   });
+  // }
 
   // onSignupClick() {
   //   console.log(this.navigator);
@@ -57,7 +57,7 @@ export default class LaunchScene extends Component {
         <Button
           style={styles.btn}
           textStyle={{ fontSize: 18, color: "white", fontWeight: "bold" }}
-          onPress={this.onLoginClick.bind(this)}
+          onPress={Actions.signIn}
         >
           Login
         </Button>
