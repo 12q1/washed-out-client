@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 import t from "tcomb-form-native";
 import Account, { formOptions} from "../models/MyAccount";
 import { TouchableHighlight } from "react-native";
-
+import ImageFactory from 'react-native-image-picker-form'
 import styles from './MyAccount.styles';
 import { ScrollView } from 'react-native-gesture-handler';
 

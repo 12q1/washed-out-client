@@ -1,4 +1,5 @@
 import t from "tcomb-form-native";
+import ImageFactory from 'react-native-image-picker-form'
 
 const Status = t.enums({
     Available: 'Available',
@@ -12,12 +13,15 @@ const Account = t.struct({
     status: Status, //enum defined above
     wash: t.Boolean,
     dry: t.Boolean,
+    iron: t.Boolean,
     fold: t.Boolean,
-    delivery: t.Boolean
+    delivery: t.Boolean,
+    image: t.String
 });
 
 export const formOptions = {
     auto: 'placeholders',
+    order: ['image', 'name','address', 'bio', 'status', 'wash', 'dry', 'delivery'],
     fields: {
         name:{
             label: "Your Name"
@@ -32,9 +36,22 @@ export const formOptions = {
             // you can use strings or JSX
             label: "Wash & Dry"
         },
+        iron: {
+            // you can use strings or JSX
+            label: "Iron"
+        },
         status: {
             label: "Status"
-        }
+        },
+        image: {
+            config: {
+              title: 'Select image',
+              options: ['Open camera', 'Select from gallery', 'Cancel']
+              // Used on Android to style BottomSheet
+            },
+            error: 'No image provided',
+            factory: ImageFactory
+          }
     }
 };
 
