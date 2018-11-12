@@ -30,9 +30,7 @@ function querySignUp({ name, email, password }) {
         signUp(fullName: $fullName, email: $email, password: $password) {
           id
           services {
-            washing
-            drying
-            ironing
+            id
           }
         }
       }

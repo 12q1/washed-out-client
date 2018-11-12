@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import updateServices from "../actions/users/update-services";
+import setLocation from "../actions/users/set-location";
 import t from "tcomb-form-native";
-import Services, { formOptions } from "../models/Services";
+import Location, { formOptions } from "../models/Location";
 import { View } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import { Text } from "react-native";
@@ -31,30 +31,40 @@ const styles = {
   }
 };
 
-class TestUpdateServices extends Component {
+class TestSetLocation extends Component {
   constructor(props) {
     super(props);
 
     this.onChange = this.onChange.bind(this);
+    this.clearForm = this.clearForm.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      newServices: {
-        washing: false,
-        drying: false,
-        ironing: false
+      newLocation: {
+        country: "the netherlands",
+        city: "velsen",
+        postalCode: "2071CR",
+        street: "rijksweg",
+        houseNumber: "342"
       }
     };
   }
 
   onSubmit() {
-    const services = this.state.newServices;
-    if (!services) return;
-    this.props.updateServices(this.props.user.services.id, services);
+    const location = this.state.newLocation;
+    if (!location) return;
+    this.props.setLocation(this.props.user.id, location);
+    this.clearForm();
   }
 
-  onChange(newServices) {
-    this.setState({ newServices });
+  clearForm() {
+    this.setState({
+      newLocation: null
+    });
+  }
+
+  onChange(newLocation) {
+    this.setState({ newLocation });
   }
 
   render() {
@@ -62,12 +72,12 @@ class TestUpdateServices extends Component {
     return (
       <View style={styles.view}>
         <KeyboardAvoidingView behavior="padding">
-          <Text style={styles.title}>Test: updateServices query</Text>
+          <Text style={styles.title}>Test: setLocation query</Text>
           <Form
             ref="form"
-            type={Services}
+            type={Location}
             options={formOptions}
-            value={this.state.newServices}
+            value={this.state.newLocation}
             onChange={this.onChange}
           />
 
@@ -80,10 +90,10 @@ class TestUpdateServices extends Component {
   }
 }
 
-const mdtp = { updateServices };
+const mdtp = { setLocation };
 const mstp = ({ user }) => ({ user });
 
 export default connect(
   mstp,
   mdtp
-)(TestUpdateServices);
+)(TestSetLocation);
