@@ -3,6 +3,7 @@ import { View } from "react-native";
 import styles from "./App.styles";
 import LaunchScene from "./screens/LaunchScene";
 import SignUpContainer from "./screens/SignUpContainer";
+import AccountDetails from "./screens/AccountDetails"
 import { Provider } from "react-redux";
 import store from "./store";
 import { Router, Scene } from "react-native-router-flux";
@@ -36,6 +37,11 @@ export default class WashedOut extends Component {
                   component={SignUpContainer}
                   title="Sign Up"
                 />
+                  <Scene
+                  key="AccountDetails"
+                  component={AccountDetails}
+                  title="Find Services"
+
                 <Scene 
                     key="feedForm"
                     component={FeedFormContainer}
