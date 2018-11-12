@@ -7,13 +7,10 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { Router, Scene } from "react-native-router-flux";
 import { ApolloProvider } from "react-apollo";
-import ApolloClient from "apollo-boost";
 import OrderForm from "./screens/OrderForm";
+import client from "./Client";
+import Test from "./screens/Test";
 
-// Create the apollo client
-export const client = new ApolloClient({
-  uri: "http://192.168.0.13:4000/graphql"
-});
 export default class WashedOut extends Component {
   render() {
     return (
@@ -22,6 +19,7 @@ export default class WashedOut extends Component {
           <Provider store={store}>
             <Router>
               <Scene key="root">
+                <Scene component={Test} initial={true} />
                 <Scene
                   key="launchScene"
                   component={LaunchScene}
