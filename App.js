@@ -9,11 +9,12 @@ import store from "./store";
 import { Router, Scene } from "react-native-router-flux";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
+import FeedFormContainer from './screens/FeedFormContainer';
+import OrderForm from "./screens/OrderForm";
+import client from "./Client";
+import Test from "./screens/Test";
 
-// Create the apollo client
-export const client = new ApolloClient({
-  uri: "http://172.16.29.196:4000/graphql"
-});
+
 export default class WashedOut extends Component {
   render() {
     return (
@@ -21,8 +22,11 @@ export default class WashedOut extends Component {
         <ApolloProvider client={client}>
           <Provider store={store}>
             <Router>
-              <Scene key="root">
+              <Scene key="root"
                 <Scene
+                <Scene component={Test} initial={true} />
+                <Scene
+
                   key="launchScene"
                   component={LaunchScene}
                   title="Launch Scene"
@@ -37,6 +41,16 @@ export default class WashedOut extends Component {
                   key="AccountDetails"
                   component={AccountDetails}
                   title="Find Services"
+
+                <Scene 
+                    key="feedForm"
+                    component={FeedFormContainer}
+                    title="Feed Form"
+                />
+                <Scene
+                  key="orderForm"
+                  component={OrderForm}
+                  title="Make an Order"
                 />
               </Scene>
             </Router>

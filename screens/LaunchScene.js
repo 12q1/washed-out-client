@@ -6,7 +6,7 @@ import Button from "apsl-react-native-button";
 import styles from "./LaunchScene.styles";
 import { Actions } from "react-native-router-flux";
 
-// import LoginScene from './LoginScene';
+import SignIn from './SignInContainer';
 import SignUp from "./SignUpContainer";
 import AccountDetails from './AccountDetails'
 import { Action } from "rxjs/internal/scheduler/Action";
@@ -22,16 +22,16 @@ export default class LaunchScene extends Component {
     }
   }
 
-  onLoginClick() {
-    this.toNext({
-      name: "Login",
-      title: "Login",
-      component: Login,
-      passProps: {
-        leftBtn: "Back"
-      }
-    });
-  }
+  // onLoginClick() {
+  //   this.toNext({
+  //     name: "Login",
+  //     title: "Login",
+  //     component: Login,
+  //     passProps: {
+  //       leftBtn: "Back"
+  //     }
+  //   });
+  // }
 
   onFindServicesClick() {
     this.toNext({
@@ -68,7 +68,7 @@ export default class LaunchScene extends Component {
         <Button
           style={styles.btn}
           textStyle={{ fontSize: 18, color: "white", fontWeight: "bold" }}
-          onPress={this.onLoginClick.bind(this)}
+          onPress={Actions.signIn}
         >
           Login
         </Button>
