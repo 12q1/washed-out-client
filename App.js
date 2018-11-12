@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { Router, Scene } from "react-native-router-flux";
 import { ApolloProvider } from "react-apollo";
+import OrderForm from "./screens/OrderForm";
 import client from "./Client";
 import Test from "./screens/Test";
 
@@ -28,6 +29,12 @@ export default class WashedOut extends Component {
                   key="signUp"
                   component={SignUpContainer}
                   title="Sign Up"
+                />
+                <Scene
+                  key="orderForm"
+                  component={OrderForm}
+                  title="Make an Order"
+                  initial={true}
                 />
               </Scene>
             </Router>
