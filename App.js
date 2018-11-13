@@ -21,15 +21,13 @@ export default class WashedOut extends Component {
         <ApolloProvider client={client}>
           <Provider store={store}>
             <Router>
-              <Scene key="root"
-                <Scene
-                <Scene component={Test} initial={true} />
+              <Scene key="root">
+                <Scene component={Test}/>
                 <Scene
 
                   key="launchScene"
                   component={LaunchScene}
                   title="Launch Scene"
-                  initial={true}
                 />
                 <Scene
                   key="signUp"
@@ -40,6 +38,7 @@ export default class WashedOut extends Component {
                     key="feedForm"
                     component={FeedFormContainer}
                     title="Feed Form"
+                    initial={true}
                 />
                 <Scene
                   key="orderForm"
