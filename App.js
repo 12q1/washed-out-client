@@ -8,12 +8,15 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { Router, Scene } from "react-native-router-flux";
 import { ApolloProvider } from "react-apollo";
-import ApolloClient from "apollo-boost";
+
+import FeedFormContainer from "./screens/FeedFormContainer";
+import OrderForm from "./screens/OrderForm";
+
 import FeedFormContainer from './screens/FeedFormContainer';
 import MyAccount from "./screens/MyAccount";
+
 import client from "./Client";
 // import Test from "./screens/Test";
-
 
 export default class WashedOut extends Component {
   render() {
@@ -30,23 +33,26 @@ export default class WashedOut extends Component {
                   key="launchScene"
                   component={LaunchScene}
                   title="Launch Scene"
-                  //initial={true}
+
                 />
                 <Scene
                   key="signUp"
                   component={SignUpContainer}
                   title="Sign Up"
                 />
+
+                <Scene
+                  key="feedForm"
+                  component={FeedFormContainer}
+                  title="Feed Form"
+                  initial={true}
+
                   <Scene
                   key="AccountDetails"
                   component={AccountDetails}
                   title="Find Services"
                   />
-                <Scene 
-                    key="feedForm"
-                    component={FeedFormContainer}
-                    title="Feed Form"
-                />
+             
                 <Scene
                   key="myAccount"
                   component={MyAccount}
