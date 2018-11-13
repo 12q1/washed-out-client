@@ -1,87 +1,82 @@
-/* This is the screen for account details at*/
-
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import { View } from "react-native";
 import { Card, Rating, Avatar, Text, Button } from "react-native-elements";
+import fetchAccountDetails from "../actions/users/fetch-account-details";
 
-export default class AccountDetails extends Component {
-  state = {
-    user: [
-      {
-        id: 1,
-        fullName: "Brynn",
-        picture: "https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg"
-      }
-    ],
-    ratings: 3,
-    status: "Available",
-    services: [
-      { serviceName: "washing", cost: 20 },
-      { serviceName: "drying", cost: 10 }
-    ]
-  };
+class AccountDetails extends Component {
+  componentDidMount() {
+    this.props.fetchAccountDetails(this.props.selectedUserId);
+  }
+
+  filterServices() {
+    return Object.keys(this.props.selectedUser.services).filter(
+      key =>
+        this.props.selectedUser.services[key] &&
+        key !== "__typename" &&
+        key !== "id"
+    );
+  }
 
   render() {
+    const services = !!this.props.selectedUser ? this.filterServices() : null;
     return (
       <View>
-        {this.state.user &&
-          this.state.user.map(user => {
-            return (
-              <View>
-                <Card key={user.id}>
-                  <View style={{ flexDirection: "row" }}>
-                    <Avatar
-                      style={{ justifyContent: "flex-start" }}
-                      large
-                      rounded
-                      source={{ uri: user.picture }}
-                    />
-                    <Card
-                      style={{
-                        justifyContent: "flex-end",
-                        alignItem: "stretch"
-                      }}
-                    >
-                      <Text> Name: {user.fullName} </Text>
-                      <Text> Rating: </Text>
-                      <Rating
-                        imageSize={20}
-                        readonly
-                        startingValue={this.state.ratings}
-                      />
-                      <Text> Status: {this.state.status} </Text>
-                    </Card>
-                  </View>
-                </Card>
-                <Card>
-                  <Text style={{ textAlign: "center" }}> Services </Text>
-                  {this.state.services &&
-                    this.state.services.map(service => (
-                      <Card
-                        key={service.serviceName}
-                        title={service.serviceName}
-                      >
-                        <Text style={{ textAlign: "center" }}>
-                          {"€" + service.cost}
-                        </Text>
-                      </Card>
-                    ))}
-                </Card>
-                <Card>
-                  <Button backgroundColor="#1E90FF" clear title="Contact" />
+        {!!this.props.selectedUser && (
+          <View>
+            <Card>
+              <View style={{ flexDirection: "row" }}>
+                <Avatar
+                  style={{ justifyContent: "flex-start" }}
+                  large
+                  rounded
+                  source={{ uri: this.props.selectedUser.picture }}
+                />
+                <Card
+                  style={{
+                    justifyContent: "flex-end",
+                    alignItem: "stretch"
+                  }}
+                >
+                  <Text> Name: {this.props.selectedUser.fullName} </Text>
+                  <Text> Rating: </Text>
+                  <Rating
+                    imageSize={20}
+                    readonly
+                    startingValue={this.props.selectedUser.rating}
+                  />
+                  <Text> Status: {this.props.selectedUser.status} </Text>
                 </Card>
               </View>
-            );
-          })}
+            </Card>
+            {!!services.length && (
+              <Card>
+                <Text style={{ textAlign: "center" }}> Services </Text>
+                {services.map((key, i) => {
+                  return (
+                    <Card key={i} title={key}>
+                      <Text style={{ textAlign: "center" }}>
+                        {"€" + this.props.selectedUser.serviceFees[key]}
+                      </Text>
+                    </Card>
+                  );
+                })}
+              </Card>
+            )}
+            <Card>
+              <Button backgroundColor="#1E90FF" clear title="Contact" />
+            </Card>
+          </View>
+        )}
       </View>
     );
   }
 }
 
-// const mdtp = { signUp };
+const mstp = ({ selectedUser }) => ({ selectedUser });
+const mdtp = { fetchAccountDetails };
 
-// export default connect(
-//   null,
-//   mdtp
-// )(SignUpContainer);
+export default connect(
+  mstp,
+  mdtp
+)(AccountDetails);

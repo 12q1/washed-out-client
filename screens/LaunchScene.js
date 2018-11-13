@@ -5,11 +5,8 @@ import { View, Image } from "react-native";
 import Button from "apsl-react-native-button";
 import styles from "./LaunchScene.styles";
 import { Actions } from "react-native-router-flux";
+import AccountDetails from "./AccountDetails";
 
-import SignIn from './SignInContainer';
-import SignUp from "./SignUpContainer";
-import AccountDetails from './AccountDetails'
-import { Action } from "rxjs/internal/scheduler/Action";
 export default class LaunchScene extends Component {
   constructor(props) {
     super(props);
@@ -22,39 +19,16 @@ export default class LaunchScene extends Component {
     }
   }
 
-  // onLoginClick() {
-  //   this.toNext({
-  //     name: "Login",
-  //     title: "Login",
-  //     component: Login,
-  //     passProps: {
-  //       leftBtn: "Back"
-  //     }
-  //   });
-  // }
-
   onFindServicesClick() {
     this.toNext({
       name: "FindServices",
-      title:"Find Services",
+      title: "Find Services",
       component: AccountDetails,
       passProps: {
         leftBtn: "Back"
       }
     });
   }
-  // onSignupClick() {
-  //   console.log(this.navigator);
-  //   this.toNext({
-  //     name: "SignUp",
-  //     title: "Sign Up",
-  //     leftBtn: "Back",
-  //     component: SignUp,
-  //     passProps: {
-  //       leftBtn: "Back"
-  //     }
-  //   });
-  // }
 
   render() {
     return (
