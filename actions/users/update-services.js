@@ -6,7 +6,7 @@ export const UPDATED_SERVICES = "UPDATED_SERVICES";
 export default (id, services) => {
   return function(dispatch) {
     console.log(id);
-    querySetLocation(id, services)
+    queryUpdateServices(id, services)
       .then(res => {
         console.log(res);
         dispatch({
@@ -23,25 +23,25 @@ export default (id, services) => {
   };
 };
 
-function querySetLocation(id, { washing, drying, ironing }) {
+function queryUpdateServices(
+  id,
+  { washing, drying, ironing, folding, pickup, delivery }
+) {
   return client.mutate({
-    variables: { id, washing, drying, ironing },
+    variables: {
+      id,
+      services: { washing, drying, ironing, folding, pickup, delivery }
+    },
     mutation: gql`
-      mutation updateServices(
-        $id: Int!
-        $washing: Boolean
-        $drying: Boolean
-        $ironing: Boolean
-      ) {
-        updateServices(
-          id: $id
-          washing: $washing
-          drying: $drying
-          ironing: $ironing
-        ) {
+      mutation updateServices($id: Int!, $services: ServicesInput) {
+        updateServices(id: $id, services: $services) {
+          id
           washing
           drying
           ironing
+          folding
+          delivery
+          pickup
         }
       }
     `

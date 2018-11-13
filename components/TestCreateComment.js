@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import updateServices from "../actions/users/update-services";
+import createComment from "../actions/comments/create-comment";
 import t from "tcomb-form-native";
-import Services, { formOptions } from "../models/Services";
+import Comment, { formOptions } from "../models/Comment";
 import { View } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import { Text } from "react-native";
 import { TouchableHighlight } from "react-native";
+import { Rating } from "react-native-elements";
 
 const styles = {
   view: {
@@ -31,47 +32,69 @@ const styles = {
   }
 };
 
-class TestUpdateServices extends Component {
+class TestCreateComment extends Component {
   constructor(props) {
     super(props);
 
     this.onChange = this.onChange.bind(this);
+    this.clearForm = this.clearForm.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.ratingCompleted = this.ratingCompleted.bind(this);
 
     this.state = {
-      newServices: {
-        washing: true,
-        drying: true,
-        ironing: true,
-        folding: false,
-        pickup: false,
-        delivery: false
-      }
+      newComment: {
+        content: "hello this is a comment"
+      },
+      rating: 3.6
     };
   }
 
-  onSubmit() {
-    const services = this.state.newServices;
-    if (!services) return;
-    this.props.updateServices(this.props.user.services.id, services);
+  ratingCompleted(rating) {
+    this.setState({ rating });
   }
 
-  onChange(newServices) {
-    this.setState({ newServices });
+  onSubmit() {
+    const comment = this.state.newComment;
+    if (!comment) return;
+    this.props.createComment(this.props.user.id, 1, {
+      content: comment.content,
+      rating: this.state.rating
+    });
+    this.clearForm();
+  }
+
+  clearForm() {
+    this.setState({
+      newComment: null
+    });
+  }
+
+  onChange(newComment) {
+    this.setState({ newComment });
   }
 
   render() {
     const Form = t.form.Form;
+    const rating = this.state.rating;
     return (
       <View style={styles.view}>
         <KeyboardAvoidingView behavior="padding">
-          <Text style={styles.title}>Test: updateServices query</Text>
+          <Text style={styles.title}>Test: createComment query</Text>
           <Form
             ref="form"
-            type={Services}
+            type={Comment}
             options={formOptions}
-            value={this.state.newServices}
+            value={this.state.newComment}
             onChange={this.onChange}
+          />
+          <Rating
+            showRating
+            type="star"
+            fractions={1}
+            imageSize={40}
+            startingValue={rating}
+            onFinishRating={this.ratingCompleted}
+            style={{ paddingVertical: 10 }}
           />
 
           <TouchableHighlight onPress={this.onSubmit} style={styles.button}>
@@ -83,10 +106,10 @@ class TestUpdateServices extends Component {
   }
 }
 
-const mdtp = { updateServices };
+const mdtp = { createComment };
 const mstp = ({ user }) => ({ user });
 
 export default connect(
   mstp,
   mdtp
-)(TestUpdateServices);
+)(TestCreateComment);
