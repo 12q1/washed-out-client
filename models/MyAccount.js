@@ -16,7 +16,6 @@ const Account = t.struct({
     iron: t.Boolean,
     fold: t.Boolean,
     delivery: t.Boolean,
-    image: t.String
 });
 
 export const formOptions = {
@@ -43,15 +42,6 @@ export const formOptions = {
         status: {
             label: "Status"
         },
-        image: {
-            config: {
-              title: 'Select image',
-              options: ['Open camera', 'Select from gallery', 'Cancel']
-              // Used on Android to style BottomSheet
-            },
-            error: 'No image provided',
-            factory: ImageFactory
-          }
     }
 };
 
