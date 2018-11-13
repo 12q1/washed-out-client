@@ -6259,6 +6259,7 @@ react-native-drawer-layout@1.3.2:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
+
 react-native-drawer@2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-native-drawer/-/react-native-drawer-2.5.0.tgz#022cba5c0516126a9fc9cce3185cb46c644b51c4"
@@ -6290,6 +6291,7 @@ react-native-flash-message@^0.1.10:
   integrity sha512-hGOEoViRXLMR6cNry39qlDKG9QI+5rSQsjgzFZHcm+KlnuFoFJDuD2rdI92G8Tp85CHhYzhRGopYdT+RhQuOBA==
   dependencies:
     prop-types "^15.6.2"
+
 
 react-native-gesture-handler@1.0.9:
   version "1.0.9"
@@ -7465,7 +7467,7 @@ tcomb-form-native@^0.6.20:
   dependencies:
     tcomb-validation "^3.0.0"
 
-tcomb-validation@^3.0.0:
+tcomb-validation@^3.0.0, tcomb-validation@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/tcomb-validation/-/tcomb-validation-3.4.1.tgz#a7696ec176ce56a081d9e019f8b732a5a8894b65"
   integrity sha512-urVVMQOma4RXwiVCa2nM2eqrAomHROHvWPuj6UkDGz/eb5kcy0x6P0dVt6kzpUZtYMNoAqJLWmz1BPtxrtjtrA==

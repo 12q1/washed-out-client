@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import updateServices from "../actions/users/update-services";
+import createServiceRequest from "../actions/service-requests/create-service-request";
 import t from "tcomb-form-native";
-import Services, { formOptions } from "../models/Services";
+import ServiceRequest, { formOptions } from "../models/ServiceRequest";
 import { View } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import { Text } from "react-native";
@@ -31,33 +31,49 @@ const styles = {
   }
 };
 
-class TestUpdateServices extends Component {
+class TestCreateServiceRequest extends Component {
   constructor(props) {
     super(props);
 
     this.onChange = this.onChange.bind(this);
+    this.clearForm = this.clearForm.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      newServices: {
-        washing: true,
-        drying: true,
-        ironing: true,
-        folding: false,
-        pickup: false,
-        delivery: false
+      newServiceRequest: {
+        items: [
+          { itemType: "pants", count: 1 },
+          { itemType: "shirt", count: 2 }
+        ],
+        specifications: "I'm sexy and I know it",
+        services: {
+          washing: true,
+          drying: true,
+          ironing: true,
+          folding: false,
+          pickup: false,
+          delivery: false
+        },
+        additionalCharge: 5.4
       }
     };
   }
 
   onSubmit() {
-    const services = this.state.newServices;
-    if (!services) return;
-    this.props.updateServices(this.props.user.services.id, services);
+    const serviceRequest = this.state.newServiceRequest;
+    if (!serviceRequest) return;
+    this.props.createServiceRequest(this.props.user.id, 1, serviceRequest);
+    this.clearForm();
   }
 
-  onChange(newServices) {
-    this.setState({ newServices });
+  clearForm() {
+    this.setState({
+      newServiceRequest: null
+    });
+  }
+
+  onChange(newServiceRequest) {
+    this.setState({ newServiceRequest });
   }
 
   render() {
@@ -65,12 +81,12 @@ class TestUpdateServices extends Component {
     return (
       <View style={styles.view}>
         <KeyboardAvoidingView behavior="padding">
-          <Text style={styles.title}>Test: updateServices query</Text>
+          <Text style={styles.title}>Test: createServiceRequest query</Text>
           <Form
             ref="form"
-            type={Services}
+            type={ServiceRequest}
             options={formOptions}
-            value={this.state.newServices}
+            value={this.state.newServiceRequest}
             onChange={this.onChange}
           />
 
@@ -83,10 +99,10 @@ class TestUpdateServices extends Component {
   }
 }
 
-const mdtp = { updateServices };
+const mdtp = { createServiceRequest };
 const mstp = ({ user }) => ({ user });
 
 export default connect(
   mstp,
   mdtp
-)(TestUpdateServices);
+)(TestCreateServiceRequest);

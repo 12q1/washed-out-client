@@ -32,6 +32,9 @@ function querySignUp({ name, email, password }) {
           services {
             id
           }
+          serviceFees {
+            id
+          }
         }
       }
     `
