@@ -8,10 +8,9 @@ export default (id, services) => {
     console.log(id);
     queryUpdateServices(id, services)
       .then(res => {
-        console.log(res);
         dispatch({
           type: UPDATED_SERVICES,
-          payload: res
+          payload: res.data.updateServices
         });
       })
       .catch(error => {

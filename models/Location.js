@@ -6,7 +6,7 @@ const Location = t.struct({
   postalCode: t.String,
   street: t.String,
   houseNumber: t.String,
-  addition: t.String
+  addition: t.maybe(t.String)
 });
 
 export const formOptions = {

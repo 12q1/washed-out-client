@@ -15,7 +15,8 @@ import { Actions } from "react-native-router-flux";
 
 class FeedContainer extends Component {
   componentDidMount() {
-    this.props.fetchFeed(1);
+    console.log(this.props.user.id);
+    this.props.fetchFeed(this.props.user.id);
   }
 
   renderSeparator = () => {
@@ -31,7 +32,8 @@ class FeedContainer extends Component {
     );
   };
   renderHeader = () => {
-    return <HeaderComponent />;
+    const picture = this.props.user ? this.props.user.picture : "";
+    return <HeaderComponent picture={picture} />;
   };
 
   renderFooter = () => {
@@ -63,7 +65,9 @@ class FeedContainer extends Component {
                     roundAvatar
                     key={item.id}
                     onPress={() =>
-                      Actions.accountDetails({ selectedUserId: item.id })
+                      setTimeout(() => {
+                        Actions.accountDetails({ selectedUserId: item.id });
+                      }, 200)
                     }
                     keyExtractor={item.id}
                     title={`${item.fullName}`}
@@ -84,7 +88,7 @@ class FeedContainer extends Component {
   }
 }
 
-const mstp = ({ feed }) => ({ feed });
+const mstp = ({ feed, user }) => ({ feed, user });
 const mdtp = { fetchFeed };
 
 export default connect(

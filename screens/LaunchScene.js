@@ -42,7 +42,7 @@ export default class LaunchScene extends Component {
         <Button
           style={styles.btn}
           textStyle={{ fontSize: 18, color: "white", fontWeight: "bold" }}
-          onPress={Actions.signIn}
+          onPress={Actions.login}
         >
           Login
         </Button>
@@ -52,14 +52,6 @@ export default class LaunchScene extends Component {
           onPress={Actions.signUp}
         >
           Sign up
-        </Button>
-
-        <Button
-          style={styles.btn}
-          textStyle={{ fontSize: 18, color: "white", fontWeight: "bold" }}
-          onPress={Actions.AccountDetails}
-        >
-          Account- find services
         </Button>
       </View>
     );

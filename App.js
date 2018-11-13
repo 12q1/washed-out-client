@@ -9,9 +9,13 @@ import LaunchScene from "./screens/LaunchScene";
 import SignUpContainer from "./screens/SignUpContainer";
 import AccountDetails from "./screens/AccountDetails";
 import FeedContainer from "./screens/FeedContainer";
-import MyAccount from "./screens/MyAccount";
+import AddInfoForm from "./screens/AddInfoForm";
 import Test from "./screens/Test";
 import client from "./Client";
+import LoginContainer from "./screens/LoginContainer";
+import AddLocationForm from "./screens/AddLocationForm";
+import AddServicesForm from "./screens/AddServicesForm";
+import AddServiceFeesForm from "./screens/AddServiceFeesForm";
 
 export default class WashedOut extends Component {
   render() {
@@ -22,17 +26,18 @@ export default class WashedOut extends Component {
             <Router>
               <Scene key="root">
                 <Scene component={Test} />
-
                 <Scene
                   key="launchScene"
                   component={LaunchScene}
-                  title="Launch Scene"
+                  title="Home"
+                  initial={true}
                 />
                 <Scene
                   key="signUp"
                   component={SignUpContainer}
                   title="Sign Up"
                 />
+                <Scene key="login" component={LoginContainer} title="Sign Up" />
                 <Scene
                   key="accountDetails"
                   component={AccountDetails}
@@ -42,18 +47,33 @@ export default class WashedOut extends Component {
                   key="feed"
                   component={FeedContainer}
                   title="Feed"
-                  initial={true}
+                  hideNavBar
+                  swipeEnabled={false}
                 />
 
                 <Scene
-                  key="AccountDetails"
-                  component={AccountDetails}
-                  title="Find Services"
+                  key="addInfoForm"
+                  component={AddInfoForm}
+                  title="Add Info"
+                  hideNavBar
                 />
                 <Scene
-                  key="myAccount"
-                  component={MyAccount}
-                  title="My Account"
+                  key="addLocationForm"
+                  component={AddLocationForm}
+                  title="Add Location"
+                  hideNavBar
+                />
+                <Scene
+                  key="addServicesForm"
+                  component={AddServicesForm}
+                  title="Add Services"
+                  hideNavBar
+                />
+                <Scene
+                  key="addServiceFeesForm"
+                  component={AddServiceFeesForm}
+                  title="Add Services"
+                  hideNavBar
                 />
               </Scene>
             </Router>

@@ -1,7 +1,12 @@
 import t from "tcomb-form-native";
 
-const User = t.struct({
+export const UserSignUp = t.struct({
   name: t.String,
+  email: t.String,
+  password: t.String
+});
+
+export const UserSignIn = t.struct({
   email: t.String,
   password: t.String
 });
@@ -17,5 +22,3 @@ export const formOptions = {
     }
   }
 };
-
-export default User;
