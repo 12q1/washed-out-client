@@ -4,6 +4,8 @@ import { Header, Left, Body, Right, Button } from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./HeaderComponent.styles";
 
+import { Avatar } from "react-native-elements";
+
 export const HeaderComponent = ({ logo, navigation }) => {
   return (
     <Header style={{ backgroundColor: "#42b6f4" }} iosBarStyle="light-content">
@@ -20,10 +22,9 @@ export const HeaderComponent = ({ logo, navigation }) => {
 
       <Right>
         <Button transparent>
-          <Icon
-            name="sign-out"
-            style={styles.icon}
-            onPress={() => navigation.navigate("ThankYou")}
+          <Avatar
+            rounded
+            source={{ uri: "https://randomuser.me/api/portraits/men/97.jpg" }}
           />
         </Button>
       </Right>

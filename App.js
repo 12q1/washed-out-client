@@ -21,6 +21,7 @@ export default class WashedOut extends Component {
             <Router>
               <Scene key="root">
                 <Scene component={Test} />
+
                 <Scene
                   key="launchScene"
                   component={LaunchScene}
