@@ -12,6 +12,9 @@ import ApolloClient from "apollo-boost";
 import FeedFormContainer from './screens/FeedFormContainer';
 import OrderForm from "./screens/OrderForm";
 import client from "./Client";
+import History from './screens/History'
+import HeaderComponent from "./screens/HeaderComponent";
+
 // import Test from "./screens/Test";
 
 
@@ -27,7 +30,7 @@ export default class WashedOut extends Component {
                   key="launchScene"
                   component={LaunchScene}
                   title="Launch Scene"
-                  initial={true}
+                  // initial={true}
                 />
                 <Scene
                   key="signUp"
@@ -43,12 +46,20 @@ export default class WashedOut extends Component {
                     key="feedForm"
                     component={FeedFormContainer}
                     title="Feed Form"
+                    // initial={true}
                 />
                 <Scene
                   key="orderForm"
                   component={OrderForm}
                   title="Make an Order"
                 />
+                <Scene
+                  key="history"
+                  component={History}
+                  initial={true}
+                  title="Account history"
+                  hideNavBar={false}
+                 />
               </Scene>
             </Router>
           </Provider>

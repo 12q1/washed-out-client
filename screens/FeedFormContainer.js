@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import { List, ListItem, SearchBar } from 'react-native-elements';
-import { View, Text, FlatList, ActivityIndicator, SafeAreaView } from 'react-native';
+import { View, FlatList, ActivityIndicator, SafeAreaView} from 'react-native';
 import { getUsers } from '../api/index';
 import { HeaderComponent } from './HeaderComponent';
 import './HeaderComponent.styles';
 
 
+
 export default class FeedFormContainer extends Component {
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: '#42b6f4',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+
+  };
+
 
     constructor(props) {
         super(props);
@@ -49,12 +61,14 @@ export default class FeedFormContainer extends Component {
           />
         );
       };
+
       renderHeader = () => {
-        return (
-            <HeaderComponent/>
-        );
-      };
-    
+         return (
+             <HeaderComponent/>
+       );
+       };
+     
+
       renderFooter = () => {
         if (!this.state.loading) return null;
     

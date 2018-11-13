@@ -6,11 +6,6 @@ import { View } from 'react-native'
 import { Card, Rating, Avatar, Text, Button } from 'react-native-elements'
 
 
-
-
-
-
-
 export default class AccountDetails extends Component {
   state = {
     user: [

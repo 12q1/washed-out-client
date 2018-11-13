@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
 	},
 	headerText:{
 		color:"#fff",
-		fontSize:14
+		fontSize:14,
 	},
 	logo:{
 		width:50,

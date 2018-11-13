@@ -1,9 +1,11 @@
 // App.styles.js
 import { StyleSheet } from 'react-native';
+import { Platform, StatusBar} from 'react-native';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ff7b00',
+    
   },
 });

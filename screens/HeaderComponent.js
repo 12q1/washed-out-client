@@ -1,23 +1,28 @@
-import React from "react";
-import { Text, Image } from "react-native";
-import { Header, Left, Body, Right, Button} from "native-base";
+import React from 'react';
+import { Header, Left, Body, Right, Button, Text} from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./HeaderComponent.styles";
+import { Platform, StatusBar } from 'react-native';
 import { ThankYou } from './ThankYou';
 
 
-export const HeaderComponent =  ({logo, navigation})=>{
+
+const HeaderComponent =  ({logo, navigation})=>{
+
+
 	return (
-		<Header style={{backgroundColor:"#42b6f4"}} iosBarStyle="light-content">
+		<Header style={{paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight+20,
+		 								padding:30,
+										alignText:"center", 
+		 								backgroundColor:"#42b6f4"}} iosBarStyle="light-content">
 			<Left>
 				<Button transparent>
-					<Icon name="bars" style={styles.icon} />
+					<Icon name="bars" style={styles.icon}/>
 				</Button>
 			</Left>
 			<Body>{logo &&
-					<Image resizeMode="contain" style={styles.logo} source={logo}/>
-					||
-					<Text style={styles.headerText}>near by...</Text>
+					<Image resizeMode="contain" style={styles.logo} source={logo}/> ||
+					<Text id="headerTitle" style={styles.headerText} >Header Placeholder</Text>
 				}
 			</Body>
 

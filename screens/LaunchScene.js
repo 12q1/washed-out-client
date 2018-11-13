@@ -5,11 +5,9 @@ import { View, Image } from "react-native";
 import Button from "apsl-react-native-button";
 import styles from "./LaunchScene.styles";
 import { Actions } from "react-native-router-flux";
-
 import SignIn from './SignInContainer';
 import SignUp from "./SignUpContainer";
-import AccountDetails from './AccountDetails'
-import { Action } from "rxjs/internal/scheduler/Action";
+
 export default class LaunchScene extends Component {
   constructor(props) {
     super(props);
@@ -33,16 +31,6 @@ export default class LaunchScene extends Component {
   //   });
   // }
 
-  onFindServicesClick() {
-    this.toNext({
-      name: "FindServices",
-      title:"Find Services",
-      component: AccountDetails,
-      passProps: {
-        leftBtn: "Back"
-      }
-    });
-  }
   // onSignupClick() {
   //   console.log(this.navigator);
   //   this.toNext({
@@ -80,13 +68,6 @@ export default class LaunchScene extends Component {
           Sign up
         </Button>
 
-        <Button
-          style={styles.btn}
-          textStyle={{ fontSize: 18, color: "white", fontWeight: "bold" }}
-          onPress={Actions.AccountDetails}
-        >
-          Account- find services
-        </Button>
       </View>
     );
   }
