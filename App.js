@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import { View } from "react-native";
 import styles from "./App.styles";
+
+import { Router, Scene } from "react-native-router-flux";
+import { ApolloProvider } from "react-apollo";
+import { Provider } from "react-redux";
+import store from "./store";
+
 import LaunchScene from "./screens/LaunchScene";
 import SignUpContainer from "./screens/SignUpContainer";
 import AccountDetails from "./screens/AccountDetails";
-import { Provider } from "react-redux";
-import store from "./store";
-import { Router, Scene } from "react-native-router-flux";
-import { ApolloProvider } from "react-apollo";
 import FeedContainer from "./screens/FeedContainer";
-import OrderForm from "./screens/OrderForm";
-import client from "./Client";
+import MyAccount from "./screens/MyAccount";
 import Test from "./screens/Test";
+
+import client from "./Client";
 
 export default class WashedOut extends Component {
   render() {
@@ -45,9 +48,10 @@ export default class WashedOut extends Component {
                   initial={true}
                 />
                 <Scene
-                  key="orderForm"
-                  component={OrderForm}
-                  title="Make an Order"
+                  key="myAccount"
+                  component={MyAccount}
+                  title="My Account"
+                  initial={true}
                 />
               </Scene>
             </Router>
