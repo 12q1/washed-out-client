@@ -10,7 +10,7 @@ import { Router, Scene } from "react-native-router-flux";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import FeedFormContainer from './screens/FeedFormContainer';
-import OrderForm from "./screens/OrderForm";
+import MyAccount from "./screens/MyAccount";
 import client from "./Client";
 // import Test from "./screens/Test";
 
@@ -30,7 +30,7 @@ export default class WashedOut extends Component {
                   key="launchScene"
                   component={LaunchScene}
                   title="Launch Scene"
-                  initial={true}
+                  //initial={true}
                 />
                 <Scene
                   key="signUp"
@@ -48,9 +48,11 @@ export default class WashedOut extends Component {
                     title="Feed Form"
                 />
                 <Scene
-                  key="orderForm"
-                  component={OrderForm}
-                  title="Make an Order"
+                  key="myAccount"
+                  component={MyAccount}
+                  title="My Account"
+                  initial={true}
+
                 />
               </Scene>
             </Router>

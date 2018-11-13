@@ -915,7 +915,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.2.tgz#d77f9faa027cadad9c912cd47f4f8b07b0fb0864"
   integrity sha512-53ElVDSnZeFUUFIYzI8WLQ25IhWzb6vbddNp8UHlXQyU0ET2RhV5zg0NfubzU7iNMh5bBXb0htCzfvrSVNgzaQ==
 
-"@types/prop-types@*":
+"@types/prop-types@*", "@types/prop-types@^15.5.1":
   version "15.5.6"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.6.tgz#9c03d3fed70a8d517c191b7734da2879b50ca26c"
   integrity sha512-ZBFR7TROLVzCkswA3Fmqq+IIJt62/T7aY/Dmz+QkU7CaW2QFqAitCE8Ups7IzmGhcN1YWMBT4Qcoc07jU9hOJQ==
@@ -931,6 +931,22 @@
   integrity sha512-4Z0bW+75zeQgsEg7RaNuS1k9MKhci7oQqZXxrV5KUGIyXZHHAAL3KA4rjhdH8o6foZ5xsRMSqkoM5A3yRVPR5w==
   dependencies:
     "@types/node" "*"
+    "@types/react" "*"
+
+"@types/react-native-modalbox@^1.4.2":
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/@types/react-native-modalbox/-/react-native-modalbox-1.4.7.tgz#e2a21eea224f0a3bc9e0f394d528267339de810d"
+  integrity sha512-5UvRdfTpExvHN65X2nGZjE+YPkB8P8u+gKVm9tHQ5JVJhQ4DFbP0cukZNRzy+H0eMNQ1Ro8xAZwo5WK4lrisQQ==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native@*":
+  version "0.57.7"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.57.7.tgz#4cbc81de4f0f54985b20dc25010744889176e775"
+  integrity sha512-nYiQzxaZzuUkht+VsAOuFFkg3QzyIDi9Lx5X/1ngwvMhiY94HYSQDz9lozbtVgxZZJrLt0wCW6KwIUGwhw+bnA==
+  dependencies:
+    "@types/prop-types" "*"
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.3.14":
@@ -2610,7 +2626,7 @@ cosmiconfig@^5.0.5:
     js-yaml "^3.9.0"
     parse-json "^4.0.0"
 
-create-react-class@^15.6.3:
+create-react-class@^15.6.0, create-react-class@^15.6.3:
   version "15.6.3"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
   integrity sha512-M+/3Q6E6DLO6Yx3OwrWjwHBnvfXXYA7W+dFjt/ZDBemHO1DDZhsalX/NUtnTYclN6GfnBDRh4qRHjcDHmlJBJg==
@@ -6302,10 +6318,33 @@ react-native-gesture-handler@1.0.9:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-image-crop-picker@^0.21.3:
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.21.3.tgz#04457a3f2a888949f51be4a670dcf2520b9994f8"
+  integrity sha512-qzY8aSYZxH4L9XYRk4V1n8x1gfq+ykNG0Kc0a9ne+JWwAQkf2P8aTKeNd4noNFZEOSJBiD4XXE/pbX55dQ5F3g==
+
+react-native-image-picker-form@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker-form/-/react-native-image-picker-form-0.2.5.tgz#68b9ec4f671141e9c94b511329df17f93b2b330a"
+  integrity sha512-UeHJ/ue0fxq+2G1crbKtacr/aJ/fbT+CmgyqcHRL080SmB3uRs+h9CbcZ8zWLU+w0KM461bLH3IHe/Rbo1C0KQ==
+  dependencies:
+    react-native-js-bottom-sheet "^1.0.0"
+    react-native-vector-icons "^4.5.0"
+
 react-native-iphone-x-helper@^1.0.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.0.tgz#9f8a376eb00bc712115abff4420318a0063fa796"
   integrity sha512-xIeTo4s77wwKgBZLVRIZC9tM9/PkXS46Ul76NXmvmixEb3ZwqGdQesR3zRiLMOoIdfOURB6N9bba9po7+x9Bag==
+
+react-native-js-bottom-sheet@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-js-bottom-sheet/-/react-native-js-bottom-sheet-1.0.0.tgz#dd56a625516bc699458aa85fb9e50282b804ce0d"
+  integrity sha512-kpgokxtR048BbauX3OAwUzbz1SZW+wsQvLPmY22d5N8n12SzaAbQjONDbHi+7geJ0AC5n/AlJg6MkgV+e0weAw==
+  dependencies:
+    "@types/prop-types" "^15.5.1"
+    "@types/react-native-modalbox" "^1.4.2"
+    prop-types "^15.5.10"
+    react-native-modalbox "^1.4.2"
 
 react-native-keyboard-aware-scroll-view@0.5.0:
   version "0.5.0"
@@ -6321,6 +6360,14 @@ react-native-maps@expo/react-native-maps#v0.22.0-exp.0:
   dependencies:
     babel-plugin-module-resolver "^3.1.0"
     babel-preset-react-native "1.9.0"
+
+react-native-modalbox@^1.4.2:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-modalbox/-/react-native-modalbox-1.6.0.tgz#ee353a2d568715a2b10db8eeb91132fb1f45952b"
+  integrity sha512-kib6ooTWLgsms59DrRQWt1NBj/UiA7/Q76H8S+awQcKca/OxCAJuqEA+MRZLlt4SsTblOy6lz7Qn9MC/SE9yOw==
+  dependencies:
+    create-react-class "^15.6.0"
+    prop-types "^15.5.10"
 
 react-native-reanimated@1.0.0-alpha.10:
   version "1.0.0-alpha.10"
@@ -6385,7 +6432,7 @@ react-native-tab-view@^1.0.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-native-vector-icons@4.6.0:
+react-native-vector-icons@4.6.0, react-native-vector-icons@^4.5.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.6.0.tgz#e4014311ffa6de397d914ffc31b7097a874cc8d5"
   integrity sha512-rpfhfPiXCK2PX1nrNhdxSMrEGB/Gw/SvKoPM0G2wAkSoqynnes19K0VYI+Up7DqR1rFIpE4hP2erpT1tNx2tfg==
