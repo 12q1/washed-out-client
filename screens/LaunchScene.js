@@ -6,9 +6,10 @@ import Button from "apsl-react-native-button";
 import styles from "./LaunchScene.styles";
 import { Actions } from "react-native-router-flux";
 
-// import LoginScene from './LoginScene';
+import SignIn from './SignInContainer';
 import SignUp from "./SignUpContainer";
-
+import AccountDetails from './AccountDetails'
+import { Action } from "rxjs/internal/scheduler/Action";
 export default class LaunchScene extends Component {
   constructor(props) {
     super(props);
@@ -21,17 +22,27 @@ export default class LaunchScene extends Component {
     }
   }
 
-  onLoginClick() {
+  // onLoginClick() {
+  //   this.toNext({
+  //     name: "Login",
+  //     title: "Login",
+  //     component: Login,
+  //     passProps: {
+  //       leftBtn: "Back"
+  //     }
+  //   });
+  // }
+
+  onFindServicesClick() {
     this.toNext({
-      name: "Login",
-      title: "Login",
-      component: Login,
+      name: "FindServices",
+      title:"Find Services",
+      component: AccountDetails,
       passProps: {
         leftBtn: "Back"
       }
     });
   }
-
   // onSignupClick() {
   //   console.log(this.navigator);
   //   this.toNext({
@@ -57,7 +68,7 @@ export default class LaunchScene extends Component {
         <Button
           style={styles.btn}
           textStyle={{ fontSize: 18, color: "white", fontWeight: "bold" }}
-          onPress={this.onLoginClick.bind(this)}
+          onPress={Actions.signIn}
         >
           Login
         </Button>
@@ -67,6 +78,14 @@ export default class LaunchScene extends Component {
           onPress={Actions.signUp}
         >
           Sign up
+        </Button>
+
+        <Button
+          style={styles.btn}
+          textStyle={{ fontSize: 18, color: "white", fontWeight: "bold" }}
+          onPress={Actions.AccountDetails}
+        >
+          Account- find services
         </Button>
       </View>
     );
