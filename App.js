@@ -49,12 +49,6 @@ export default class WashedOut extends Component {
                 />
 
                 <Scene
-                  key="feedForm"
-                  component={FeedFormContainer}
-                  title="Feed Form"
-                  initial={true}
-                />
-                <Scene
                   key="AccountDetails"
                   component={AccountDetails}
                   title="Find Services"
@@ -63,7 +57,6 @@ export default class WashedOut extends Component {
                   key="myAccount"
                   component={MyAccount}
                   title="My Account"
-                  initial={true}
                 />
               </Scene>
             </Router>

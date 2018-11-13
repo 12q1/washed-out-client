@@ -6,7 +6,7 @@ import styles from "./HeaderComponent.styles";
 
 import { Avatar } from "react-native-elements";
 
-export const HeaderComponent = ({ logo, navigation }) => {
+export const HeaderComponent = ({ logo }) => {
   return (
     <Header style={{ backgroundColor: "#42b6f4" }} iosBarStyle="light-content">
       <Left>
