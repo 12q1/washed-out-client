@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { View } from "react-native";
 import { Card, Rating, Avatar, Text, Button } from "react-native-elements";
 import fetchAccountDetails from "../actions/users/fetch-account-details";
+import clearAccountDetails from "../actions/users/clear-account-details";
 
 class AccountDetails extends Component {
   componentDidMount() {
@@ -16,6 +17,10 @@ class AccountDetails extends Component {
         key !== "__typename" &&
         key !== "id"
     );
+  }
+
+  componentWillUnmount() {
+    this.props.clearAccountDetails();
   }
 
   render() {
@@ -74,7 +79,7 @@ class AccountDetails extends Component {
 }
 
 const mstp = ({ selectedUser }) => ({ selectedUser });
-const mdtp = { fetchAccountDetails };
+const mdtp = { fetchAccountDetails, clearAccountDetails };
 
 export default connect(
   mstp,

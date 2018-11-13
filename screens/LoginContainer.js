@@ -2,9 +2,9 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import signUp from "../actions/users/sign-up";
+import login from "../actions/users/sign-in";
 import t from "tcomb-form-native";
-import { UserSignUp, formOptions } from "../models/User";
+import { formOptions, UserSignIn } from "../models/User";
 import styles from "./SignUp.styles";
 import { View } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
@@ -12,29 +12,28 @@ import { Text } from "react-native";
 import { TouchableHighlight } from "react-native";
 import { Actions } from "react-native-router-flux";
 
-class SignUpContainer extends Component {
+class LoginContainer extends Component {
   constructor(props) {
     super(props);
 
     this.onChange = this.onChange.bind(this);
-
     this.clearForm = this.clearForm.bind(this);
-
     this.onSubmit = this.onSubmit.bind(this);
+
     this.state = { newUser: null };
   }
 
   onSubmit() {
     const user = this.state.newUser;
-    if (!user.name || !user.password || !user.email) return;
-    console.log(user);
-    this.props.signUp(user);
+    if (!user.email || !user.password) return;
+    this.props.login(user);
     this.clearForm();
   }
 
   componentDidUpdate() {
-    if (this.props.user) {
-      Actions.addInfoForm();
+    console.log(this.props.user);
+    if (this.props.user && this.props.user.token) {
+      Actions.feed();
     }
   }
 
@@ -52,10 +51,10 @@ class SignUpContainer extends Component {
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
-          <Text style={styles.title}>Sign up for Washed Out</Text>
+          <Text style={styles.title}>Login</Text>
           <Form
             ref="form"
-            type={UserSignUp}
+            type={UserSignIn}
             options={formOptions}
             value={this.state.newUser}
             onChange={this.onChange}
@@ -66,7 +65,7 @@ class SignUpContainer extends Component {
             onPress={this.onSubmit}
             underlayColor="black"
           >
-            <Text style={styles.buttonText}>Sign up</Text>
+            <Text style={styles.buttonText}>Login</Text>
           </TouchableHighlight>
         </KeyboardAvoidingView>
       </View>
@@ -75,9 +74,9 @@ class SignUpContainer extends Component {
 }
 
 const mstp = ({ user }) => ({ user });
-const mdtp = { signUp };
+const mdtp = { login };
 
 export default connect(
   mstp,
   mdtp
-)(SignUpContainer);
+)(LoginContainer);

@@ -5,16 +5,17 @@ export const USER_SIGNED_IN = "USER_SIGNED_IN";
 
 export default user => {
   return dispatch => {
+    console.log(user);
     mutateSignIn(user)
       .then(res => {
-        console.log(JSON.stringify(res));
+        console.log(res);
         dispatch({
           type: USER_SIGNED_IN,
-          payload: "hi"
+          payload: res.data.login
         });
       })
       .catch(error => {
-        console.log(JSON.stringify(error));
+        console.log(error);
         dispatch({
           type: USER_SIGN_IN_ERROR,
           payload: error
@@ -25,32 +26,13 @@ export default user => {
 
 function mutateSignIn({ email, password }) {
   return client.mutate({
-    variables: { fullName: email, password },
+    variables: { email, password },
     mutation: gql`
-      mutation SignIn($email: String!, $password: String!) {
-        signIn(email: $email, password: $password) {
+      mutation Login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+          token
           id
-          fullName
           picture
-          status
-          services {
-            id
-            washing
-            drying
-            ironing
-            folding
-            delivery
-            pickup
-          }
-          serviceFees {
-            id
-            washing
-            drying
-            ironing
-            folding
-            delivery
-            pickup
-          }
         }
       }
     `

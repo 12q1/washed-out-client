@@ -8,10 +8,9 @@ export default (id, serviceFees) => {
     console.log(id);
     queryUpdateServiceFees(id, serviceFees)
       .then(res => {
-        console.log(res);
         dispatch({
           type: UPDATED_SERVICE_FEES,
-          payload: res
+          payload: res.data.updateServiceFees
         });
       })
       .catch(error => {

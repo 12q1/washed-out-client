@@ -11,7 +11,7 @@ export default (userId, location) => {
         console.log(res);
         dispatch({
           type: SET_LOCATION,
-          payload: res
+          payload: res.data.setLocation
         });
       })
       .catch(error => {
