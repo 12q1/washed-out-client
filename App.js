@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import { View } from "react-native";
 import styles from "./App.styles";
-
 import { Router, Scene } from "react-native-router-flux";
 import { ApolloProvider } from "react-apollo";
 import { Provider } from "react-redux";
 import store from "./store";
-
 import LaunchScene from "./screens/LaunchScene";
 import SignUpContainer from "./screens/SignUpContainer";
 import AccountDetails from "./screens/AccountDetails";
 import FeedContainer from "./screens/FeedContainer";
 import MyAccount from "./screens/MyAccount";
 import Test from "./screens/Test";
-
 import client from "./Client";
 
 export default class WashedOut extends Component {
