@@ -47,6 +47,18 @@ export default class WashedOut extends Component {
                   title="Feed"
                   initial={true}
                 />
+
+                <Scene
+                  key="feedForm"
+                  component={FeedFormContainer}
+                  title="Feed Form"
+                  initial={true}
+                />
+                <Scene
+                  key="AccountDetails"
+                  component={AccountDetails}
+                  title="Find Services"
+                />
                 <Scene
                   key="myAccount"
                   component={MyAccount}
