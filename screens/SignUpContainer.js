@@ -52,7 +52,7 @@ class SignUpContainer extends Component {
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
-          <Text style={styles.title}>Sign up for Washed Out</Text>
+          <Text style={styles.title}>Sign Up</Text>
           <Form
             ref="form"
             type={UserSignUp}

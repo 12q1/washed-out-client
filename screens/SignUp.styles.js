@@ -7,6 +7,7 @@ export default StyleSheet.create({
         flex: 1
     },
     container: {
+        backgroundColor: "#004466",
         flex: 1,
         justifyContent: 'center',
         paddingHorizontal: 20,
@@ -15,7 +16,8 @@ export default StyleSheet.create({
     title: {
         fontSize: 30,
         alignSelf: 'center',
-        marginBottom: 30
+        marginBottom: 30,
+        color: 'white',
     },
     buttonText: {
         fontSize: 18,
@@ -24,12 +26,13 @@ export default StyleSheet.create({
     },
     button: {
         height: 36,
-        backgroundColor: '#48BBEC',
-        borderColor: '#48BBEC',
+        backgroundColor: '#0086cb',
+        borderColor: '#0086cb',
         borderWidth: 1,
         borderRadius: 8,
         marginBottom: 10,
         alignSelf: 'stretch',
         justifyContent: 'center'
     },
+    
 });

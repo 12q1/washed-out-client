@@ -22,6 +22,24 @@ import NavScreen from "./screens/NavScreen";
 import MyAccount from "./screens/MyAccount";
 import EditMyAccount from "./screens/EditMyAccount";
 import ChatContainer from "./screens/ChatContainer";
+import t from 'tcomb-form-native';
+
+t.form.Form.stylesheet.textbox.normal.color= '#FFFFFF'
+t.form.Form.stylesheet.controlLabel.normal.color= '#FFFFFF'
+t.form.Form.stylesheet.textbox.normal.borderWidth = 0;
+t.form.Form.stylesheet.textbox.error.borderWidth = 0;
+t.form.Form.stylesheet.textbox.normal.marginBottom = 0;
+t.form.Form.stylesheet.textbox.error.marginBottom = 0;
+t.form.Form.stylesheet.textboxView.normal.borderWidth = 0;
+t.form.Form.stylesheet.textboxView.error.borderWidth = 0;
+t.form.Form.stylesheet.textboxView.normal.borderRadius = 0;
+t.form.Form.stylesheet.textboxView.error.borderRadius = 0;
+t.form.Form.stylesheet.textboxView.normal.borderBottomWidth = 1;
+t.form.Form.stylesheet.textboxView.normal.borderBottomColor = "#FFFFFF";
+t.form.Form.stylesheet.textboxView.error.borderBottomWidth = 1;
+t.form.Form.stylesheet.textboxView.normal.marginBottom = 5;
+t.form.Form.stylesheet.textboxView.error.marginBottom = 5;
+//overrides all tcomb forms beneath app.js to materialUI format
 
 
 export default class WashedOut extends Component {
@@ -51,7 +69,7 @@ export default class WashedOut extends Component {
                 <Scene
                   key="login"
                   component={LoginContainer}
-                  title="Sign In"
+                  title="Login"
                   navBarButtonImageColor={styles.leftButtonIconStyle}
                 />
                 <Scene
