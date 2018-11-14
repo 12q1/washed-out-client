@@ -106,7 +106,7 @@ export default class WashedOut extends Component {
                   key="myAccount"
                   component={MyAccount}
                   title="My Account"
-                  initial={true}
+                  initial={false}
                 />
               </Scene>
             </Router>
