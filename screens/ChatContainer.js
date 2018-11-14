@@ -29,9 +29,10 @@ class ChatContainer extends Component {
                     roundAvatar
                     key={item.id}
                     keyExtractor={item.id}
-                    title={`${item.from.fullName} ${item.content}`}
+                    title={`${item.from.fullName}: ${item.content}`}
                     avatar={{ uri: item.from.picture }}
                     containerStyle={{ borderBottomWidth: 0 }}
+                    chevronColor="#ffffff"
                   />
                 );
               }}

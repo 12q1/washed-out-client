@@ -43,7 +43,7 @@ class CreateMessageForm extends Component {
 
     this.state = {
       newMessage: {
-        content: "hello this is a comment"
+        content: ""
       }
     };
   }
