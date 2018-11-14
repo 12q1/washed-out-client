@@ -1,15 +1,23 @@
-// screens/MyAccount.js
-
+// screens/EditMyAccount.js
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import t from "tcomb-form-native";
-import Account, { formOptions} from "../models/MyAccount";
 import { TouchableHighlight } from "react-native";
 import styles from './MyAccount.styles';
 import { ScrollView } from 'react-native-gesture-handler';
-import ImagePick from '../components/ImagePick'
+import ImagePick from '../components/ImagePick';
 
-export default class MyAccount extends Component {
+const Account = t.struct({
+  name: t.String, //a list of strings
+  bio: t.maybe(t.String)
+});
+
+export const formOptions = {
+  auto: "placeholders",
+};
+
+
+export default class EditMyAccount extends Component {
 
   constructor(props) {
     super(props);
