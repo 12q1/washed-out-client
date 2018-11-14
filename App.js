@@ -20,6 +20,7 @@ import AddServiceFeesForm from "./screens/AddServiceFeesForm";
 import History from './screens/History'
 
 import CreateServiceRequestForm from "./screens/CreateServiceRequestForm";
+import ChatContainer from "./screens/ChatContainer";
 
 
 export default class WashedOut extends Component {
@@ -101,6 +102,7 @@ export default class WashedOut extends Component {
                   title="Account History"
                   initial={false}
                 />
+                <Scene key="chat" component={ChatContainer} title="Chat" />
               </Scene>
             </Router>
           </Provider>

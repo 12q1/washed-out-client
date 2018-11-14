@@ -6,7 +6,7 @@ export default t.struct({
 
 export const formOptions = {
   fields: {
-    content: {
+    bio: {
       label: "",
       multiline: true,
       stylesheet: {

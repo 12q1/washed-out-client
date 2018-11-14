@@ -9,12 +9,15 @@ export default userId => {
     queryAccountDetails(userId)
       .then(userRes => {
         queryGetRating(userId).then(ratingRes => {
-          dispatch({
-            type: FETCHED_ACCOUNT_DETAILS,
-            payload: {
-              ...userRes.data.getUser,
-              rating: ratingRes.data.getRating.rating
-            }
+          queryGetComments(userId).then(commentsRes => {
+            dispatch({
+              type: FETCHED_ACCOUNT_DETAILS,
+              payload: {
+                ...userRes.data.getUser,
+                rating: ratingRes.data.getRating.rating,
+                comments: commentsRes.data.getComments
+              }
+            });
           });
         });
       })
@@ -70,5 +73,22 @@ function queryGetRating(userId) {
                   }
                 }
               `
+  });
+}
+
+function queryGetComments(userId) {
+  return client.query({
+    query: gql`
+    {
+      getComments(userId: ${userId}){
+        id
+        content
+        from{
+          picture
+          fullName
+        }
+        rating
+      }
+    }`
   });
 }
