@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View } from "react-native";
 import { Card, Rating, Avatar, Text, Button } from "react-native-elements";
+import { ScrollView } from "react-native-gesture-handler";
 import fetchAccountDetails from "../actions/users/fetch-account-details";
 import clearAccountDetails from "../actions/users/clear-account-details";
 
@@ -26,7 +27,7 @@ class AccountDetails extends Component {
   render() {
     const services = !!this.props.selectedUser ? this.filterServices() : null;
     return (
-      <View>
+      <ScrollView>
         {!!this.props.selectedUser && (
           <View>
             <Card>
@@ -50,7 +51,7 @@ class AccountDetails extends Component {
                     readonly
                     startingValue={this.props.selectedUser.rating}
                   />
-                  <Text> Status: {this.props.selectedUser.status} </Text>
+                  <Text> Status: {this.props.selectedUser.status} </Text>"react-native-gesture-handler";
                 </Card>
               </View>
             </Card>
@@ -73,7 +74,7 @@ class AccountDetails extends Component {
             </Card>
           </View>
         )}
-      </View>
+      </ScrollView>
     );
   }
 }
