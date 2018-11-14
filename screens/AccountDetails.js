@@ -5,7 +5,6 @@ import { Card, Rating, Avatar, Text, Button } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 import fetchAccountDetails from "../actions/users/fetch-account-details";
 import clearAccountDetails from "../actions/users/clear-account-details";
-import { Action } from "rxjs/internal/scheduler/Action";
 import { Actions } from "react-native-router-flux";
 
 class AccountDetails extends Component {
@@ -22,18 +21,23 @@ class AccountDetails extends Component {
     );
   }
 
+  getComments(){
+    return 
+  }
+
   componentWillUnmount() {
     this.props.clearAccountDetails();
   }
 
   render() {
     const services = !!this.props.selectedUser ? this.filterServices() : null;
+    const comments = !!this.props.selectedUser ? this.props.selectedUser.comments: null;
     const selectedUser = this.props.selectedUser || false;
+    console.log(comments)
     return (
 
        <ScrollView>
         {selectedUser && (
-
           <View>
             <Card>
               <View style={{ flexDirection: "row" }}>
@@ -73,7 +77,21 @@ class AccountDetails extends Component {
                   );
                 })}
               </Card>
-            )}
+              )}
+              {!!comments.length && 
+              <Card>
+                <Text style={{ textAlign: "center" }}> Comments</Text>
+                {comments.map((comment) => {
+                  return (
+                    <Card style={{justifyContent:"center"}} key={comment.id} title={comment.fullName}>
+                      <Text style={{ textAlign: "center" }}> {comment.from.fullName}</Text>
+                      <Rating style={{alignSelf:"center"}} imageSize={20} readonly startingValue={comment.rating}></Rating>
+                      <Text style={{ textAlign: "center" }}> {comment.content} </Text>
+                    </Card>
+                  );
+                })}
+              </Card>
+            }
             <Card>
               <Button
                 backgroundColor="#1E90FF"
