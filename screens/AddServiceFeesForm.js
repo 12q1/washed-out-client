@@ -48,7 +48,6 @@ class AddServiceFeesForm extends Component {
     const { ServiceFees, formOptions } = getServiceFeesModel(
       this.props.user.services
     );
-    console.log(ServiceFees, formOptions);
     this.ServiceFees = ServiceFees;
     this.formOptions = formOptions;
     this.state = {
@@ -59,7 +58,7 @@ class AddServiceFeesForm extends Component {
   componentDidUpdate() {
     console.log(this.props.user);
     if (this.props.user.serviceFees && this.props.user.serviceFees.set) {
-      Actions.feed();
+      Actions.login();
     }
   }
 

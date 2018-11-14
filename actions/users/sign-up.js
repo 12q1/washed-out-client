@@ -11,7 +11,6 @@ export default user => {
           type: USER_SIGNED_UP,
           payload: res.data.signUp
         });
-        console.log("state:", getState());
       })
       .catch(error => {
         console.log(error);

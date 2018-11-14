@@ -5,7 +5,6 @@ export const UPDATED_SERVICES = "UPDATED_SERVICES";
 
 export default (id, services) => {
   return function(dispatch) {
-    console.log(id);
     queryUpdateServices(id, services)
       .then(res => {
         dispatch({

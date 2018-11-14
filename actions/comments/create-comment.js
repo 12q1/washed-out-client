@@ -7,7 +7,6 @@ export default (fromId, toId, comment) => {
   return function(dispatch) {
     queryCreateComment(fromId, toId, comment)
       .then(res => {
-        console.log(res);
         dispatch({
           type: CREATED_COMMENT,
           payload: res.data.createComment
@@ -23,7 +22,6 @@ export default (fromId, toId, comment) => {
 };
 
 function queryCreateComment(fromId, toId, { content, rating }) {
-  console.log(rating);
   return client.mutate({
     variables: {
       fromId,

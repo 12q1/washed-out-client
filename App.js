@@ -16,13 +16,13 @@ import LoginContainer from "./screens/LoginContainer";
 import AddLocationForm from "./screens/AddLocationForm";
 import AddServicesForm from "./screens/AddServicesForm";
 import AddServiceFeesForm from "./screens/AddServiceFeesForm";
-import History from './screens/History'
+import History from "./screens/History";
 import CreateServiceRequestForm from "./screens/CreateServiceRequestForm";
 import NavScreen from "./screens/NavScreen";
 import MyAccount from "./screens/MyAccount";
 import EditMyAccount from "./screens/EditMyAccount";
 import ChatContainer from "./screens/ChatContainer";
-
+import ChatBrowser from "./screens/ChatBrowser";
 
 export default class WashedOut extends Component {
   render() {
@@ -32,7 +32,7 @@ export default class WashedOut extends Component {
           <Provider store={store}>
             <Router>
               <Scene key="root">
-                <Scene component={Test}/>
+                <Scene component={Test} />
                 <Scene
                   key="launchScene"
                   component={LaunchScene}
@@ -44,10 +44,7 @@ export default class WashedOut extends Component {
                   component={SignUpContainer}
                   title="Sign Up"
                 />
-                <Scene
-                  key="login"
-                  component={LoginContainer}
-                  title="Sign In" />
+                <Scene key="login" component={LoginContainer} title="Sign In" />
 
                 <Scene
                   key="accountDetails"
@@ -115,10 +112,8 @@ export default class WashedOut extends Component {
                   title="Edit My Account"
                   initial={false}
                 />
-                <Scene 
-                  key="navScreen"
-                  component={NavScreen}
-                  />
+                <Scene key="navScreen" component={NavScreen} />
+                <Scene key="chatBrowser" component={ChatBrowser} />
 
                 <Scene key="chat" component={ChatContainer} title="Chat" />
               </Scene>

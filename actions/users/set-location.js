@@ -5,10 +5,8 @@ export const SET_LOCATION = "SET_LOCATION";
 
 export default (userId, location) => {
   return function(dispatch) {
-    console.log(userId);
     querySetLocation(userId, location)
       .then(res => {
-        console.log(res);
         dispatch({
           type: SET_LOCATION,
           payload: res.data.setLocation
