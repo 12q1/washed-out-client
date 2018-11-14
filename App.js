@@ -30,13 +30,17 @@ export default class WashedOut extends Component {
       <View style={styles.container}>
         <ApolloProvider client={client}>
           <Provider store={store}>
-            <Router>
-              <Scene key="root">
+            <Router navigationBarStyle={styles.navBar}
+              titleStyle={styles.navBarTitle}
+              barButtonTextStyle={styles.barButtonTextStyle}
+            >
+              <Scene key="root" headerTintColor="#FFFFFF">
                 <Scene component={Test}/>
                 <Scene
                   key="launchScene"
                   component={LaunchScene}
                   title="Home"
+                  hideNavBar
                   initial={true}
                 />
                 <Scene
@@ -47,8 +51,9 @@ export default class WashedOut extends Component {
                 <Scene
                   key="login"
                   component={LoginContainer}
-                  title="Sign In" />
-
+                  title="Sign In"
+                  navBarButtonImageColor={styles.leftButtonIconStyle}
+                />
                 <Scene
                   key="accountDetails"
                   component={AccountDetails}
@@ -115,10 +120,10 @@ export default class WashedOut extends Component {
                   title="Edit My Account"
                   initial={false}
                 />
-                <Scene 
+                <Scene
                   key="navScreen"
                   component={NavScreen}
-                  />
+                />
 
                 <Scene key="chat" component={ChatContainer} title="Chat" />
               </Scene>
