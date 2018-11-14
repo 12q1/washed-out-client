@@ -17,6 +17,7 @@ import AddLocationForm from "./screens/AddLocationForm";
 import AddServicesForm from "./screens/AddServicesForm";
 import AddServiceFeesForm from "./screens/AddServiceFeesForm";
 import CreateServiceRequestForm from "./screens/CreateServiceRequestForm";
+import ChatContainer from "./screens/ChatContainer";
 
 export default class WashedOut extends Component {
   render() {
@@ -81,6 +82,7 @@ export default class WashedOut extends Component {
                   component={CreateServiceRequestForm}
                   title="Create Service Request"
                 />
+                <Scene key="chat" component={ChatContainer} title="Chat" />
               </Scene>
             </Router>
           </Provider>

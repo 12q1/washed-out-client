@@ -2,9 +2,11 @@ import { combineReducers } from "redux";
 import user from "./user";
 import feed from "./feed";
 import selectedUser from "./selectedUser";
+import serviceRequest from "./serviceRequest";
 
 export default combineReducers({
   user,
   feed,
-  selectedUser
+  selectedUser,
+  serviceRequest
 });
