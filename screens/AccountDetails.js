@@ -21,8 +21,8 @@ class AccountDetails extends Component {
     );
   }
 
-  getComments(){
-    return 
+  getComments() {
+    return;
   }
 
   componentWillUnmount() {
@@ -31,12 +31,13 @@ class AccountDetails extends Component {
 
   render() {
     const services = !!this.props.selectedUser ? this.filterServices() : null;
-    const comments = !!this.props.selectedUser ? this.props.selectedUser.comments: null;
+    const comments = !!this.props.selectedUser
+      ? this.props.selectedUser.comments
+      : null;
     const selectedUser = this.props.selectedUser || false;
-    console.log(comments)
+    console.log(comments);
     return (
-
-       <ScrollView>
+      <ScrollView>
         {selectedUser && (
           <View>
             <Card>
@@ -77,28 +78,47 @@ class AccountDetails extends Component {
                   );
                 })}
               </Card>
-              )}
-              {!!comments.length && 
+            )}
+            {!!comments.length && (
               <Card>
                 <Text style={{ textAlign: "center" }}> Comments</Text>
-                {comments.map((comment) => {
+                {comments.map(comment => {
                   return (
-                    <Card style={{justifyContent:"center"}} key={comment.id} title={comment.fullName}>
-                      <Text style={{ textAlign: "center" }}> {comment.from.fullName}</Text>
-                      <Rating style={{alignSelf:"center"}} imageSize={20} readonly startingValue={comment.rating}></Rating>
-                      <Text style={{ textAlign: "center" }}> {comment.content} </Text>
+                    <Card
+                      style={{ justifyContent: "center" }}
+                      key={comment.id}
+                      title={comment.fullName}
+                    >
+                      <Text style={{ textAlign: "center" }}>
+                        {" "}
+                        {comment.from.fullName}
+                      </Text>
+                      <Rating
+                        style={{ alignSelf: "center" }}
+                        imageSize={20}
+                        readonly
+                        startingValue={comment.rating}
+                      />
+                      <Text style={{ textAlign: "center" }}>
+                        {" "}
+                        {comment.content}{" "}
+                      </Text>
                     </Card>
                   );
                 })}
               </Card>
-            }
+            )}
             <Card>
               <Button
                 backgroundColor="#1E90FF"
                 clear
                 title="Send Request"
                 onPress={() =>
-                  Actions.createServiceRequestForm({ toId: selectedUser.id })
+                  Actions.createServiceRequestForm({
+                    toId: selectedUser.id,
+                    services: selectedUser.services,
+                    serviceFees: selectedUser.serviceFees
+                  })
                 }
               />
             </Card>

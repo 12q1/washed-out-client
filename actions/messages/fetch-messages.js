@@ -24,7 +24,6 @@ export default (userId, otherId) => {
 };
 
 function queryMessages(userId, otherId) {
-  console.log(userId, otherId);
   return client.query({
     query: gql`
             {

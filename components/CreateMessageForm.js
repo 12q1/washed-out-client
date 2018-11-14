@@ -55,7 +55,7 @@ class CreateMessageForm extends Component {
   onSubmit() {
     const comment = this.state.newMessage;
     if (!comment) return;
-    this.props.sendMessage(this.props.user.id, this.props.selectedUser.id, {
+    this.props.sendMessage(this.props.user.id, this.props.selectedUserId, {
       content: comment.content,
       rating: this.state.rating
     });
@@ -74,7 +74,6 @@ class CreateMessageForm extends Component {
 
   render() {
     const Form = t.form.Form;
-    const rating = this.state.rating;
     return (
       <View style={styles.view}>
         <KeyboardAvoidingView behavior="padding">
@@ -96,9 +95,8 @@ class CreateMessageForm extends Component {
 }
 
 const mdtp = { sendMessage };
-const mstp = ({ user, selectedUser }) => ({
-  user,
-  selectedUser
+const mstp = ({ user }) => ({
+  user
 });
 
 export default connect(
