@@ -16,13 +16,10 @@ import LoginContainer from "./screens/LoginContainer";
 import AddLocationForm from "./screens/AddLocationForm";
 import AddServicesForm from "./screens/AddServicesForm";
 import AddServiceFeesForm from "./screens/AddServiceFeesForm";
-
 import History from './screens/History'
-
 import CreateServiceRequestForm from "./screens/CreateServiceRequestForm";
-
 import MyAccount from "./screens/MyAccount";
-
+import EditMyAccount from "./screens/EditMyAccount";
 import ChatContainer from "./screens/ChatContainer";
 
 
@@ -111,6 +108,12 @@ export default class WashedOut extends Component {
                   key="myAccount"
                   component={MyAccount}
                   title="My Account"
+                  initial={false}
+                />
+                <Scene
+                  key="editMyAccount"
+                  component={EditMyAccount}
+                  title="Edit My Account"
                   initial={false}
                 />
                 <Scene key="chat" component={ChatContainer} title="Chat" />
