@@ -2,12 +2,19 @@ import React from "react";
 import { View, Text } from "react-native";
 
 export default function(props) {
-  console.log("props", props);
+  console.log(props.message);
   return (
     <View>
-      <Text>
-        {props.user.fullName}: {props.comment.content}
-      </Text>
+      {props.message.status === "sent" && (
+        <Text>
+          {props.user.fullName}: {props.message.content}
+        </Text>
+      )}
+      {props.message.status === "recieved" && (
+        <Text style={{ textAlign: "right" }}>
+          {props.message.content}: {props.user.fullName}
+        </Text>
+      )}
     </View>
   );
 }

@@ -54,7 +54,7 @@ class CreateServiceRequestForm extends Component {
 
   componentDidUpdate() {
     if (this.props.serviceRequest) {
-      Actions.chat();
+      Actions.chat({ selectedUserId: this.props.toId });
     }
   }
 

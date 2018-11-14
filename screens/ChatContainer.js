@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { List, ListItem, SearchBar } from "react-native-elements";
-import { View, Text, FlatList, SafeAreaView } from "react-native";
+import fetchMessages from "../actions/messages/fetch-messages";
+import { View, SafeAreaView } from "react-native";
 import { connect } from "react-redux";
 import { Actions } from "react-native-router-flux";
 import Message from "../components/Message";
@@ -37,36 +37,17 @@ const comments = [
   }
 ];
 
-class FeedContainer extends Component {
-  renderSeparator = () => {
-    return (
-      <View
-        style={{
-          height: 1,
-          width: "86%",
-          backgroundColor: "#CED0CE",
-          marginLeft: "14%"
-        }}
-      />
-    );
-  };
+class ChatContainer extends Component {
+  componentDidMount() {
+    this.props.fetchMessages(this.props.user.id, this.props.selectedUserId);
+  }
 
   render() {
     return (
       <SafeAreaView>
-        {comments &&
-          comments.map(comment => {
-            console.log(
-              "comment",
-              comment,
-              "userTest",
-              userTest,
-              "user",
-              userTest[comment.userId]
-            );
-            return (
-              <Message user={userTest[comment.userId - 1]} comment={comment} />
-            );
+        {this.props.messages &&
+          this.props.messages.map(message => {
+            return <Message user={message.from} message={message} />;
           })}
         <CreateMessageForm />
       </SafeAreaView>
@@ -74,6 +55,14 @@ class FeedContainer extends Component {
   }
 }
 
-const mstp = ({ feed, user }) => ({ feed, user });
+const mstp = ({ user, messages, selectedUser }) => ({
+  user,
+  messages,
+  selectedUser
+});
+const mdtp = { fetchMessages };
 
-export default connect(mstp)(FeedContainer);
+export default connect(
+  mstp,
+  mdtp
+)(ChatContainer);

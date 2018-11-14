@@ -7,21 +7,9 @@ export default t.struct({
 export const formOptions = {
   fields: {
     content: {
-      label: "",
-      multiline: true,
-      stylesheet: {
-        ...t.form.Form.stylesheet,
-        textbox: {
-          ...t.form.Form.stylesheet.textbox,
-          normal: {
-            ...t.form.Form.stylesheet.textbox.normal,
-            height: 50
-          },
-          error: {
-            ...t.form.Form.stylesheet.textbox.error,
-            height: 50
-          }
-        }
+      type: "textarea",
+      attrs: {
+        rows: 5
       }
     }
   }
