@@ -5,6 +5,8 @@ import { Card, Rating, Avatar, Text, Button } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 import fetchAccountDetails from "../actions/users/fetch-account-details";
 import clearAccountDetails from "../actions/users/clear-account-details";
+import { Action } from "rxjs/internal/scheduler/Action";
+import { Actions } from "react-native-router-flux";
 
 class AccountDetails extends Component {
   componentDidMount() {
@@ -26,9 +28,12 @@ class AccountDetails extends Component {
 
   render() {
     const services = !!this.props.selectedUser ? this.filterServices() : null;
+    const selectedUser = this.props.selectedUser || false;
     return (
-      <ScrollView>
-        {!!this.props.selectedUser && (
+
+       <ScrollView>
+        {selectedUser && (
+
           <View>
             <Card>
               <View style={{ flexDirection: "row" }}>
@@ -36,7 +41,7 @@ class AccountDetails extends Component {
                   style={{ justifyContent: "flex-start" }}
                   large
                   rounded
-                  source={{ uri: this.props.selectedUser.picture }}
+                  source={{ uri: selectedUser.picture }}
                 />
                 <Card
                   style={{
@@ -44,14 +49,14 @@ class AccountDetails extends Component {
                     alignItem: "stretch"
                   }}
                 >
-                  <Text> Name: {this.props.selectedUser.fullName} </Text>
+                  <Text> Name: {selectedUser.fullName} </Text>
                   <Text> Rating: </Text>
                   <Rating
                     imageSize={20}
                     readonly
-                    startingValue={this.props.selectedUser.rating}
+                    startingValue={selectedUser.rating}
                   />
-                  <Text> Status: {this.props.selectedUser.status} </Text>"react-native-gesture-handler";
+                  <Text> Status: {selectedUser.status} </Text>
                 </Card>
               </View>
             </Card>
@@ -62,7 +67,7 @@ class AccountDetails extends Component {
                   return (
                     <Card key={i} title={key}>
                       <Text style={{ textAlign: "center" }}>
-                        {"€" + this.props.selectedUser.serviceFees[key]}
+                        {"€" + selectedUser.serviceFees[key]}
                       </Text>
                     </Card>
                   );
@@ -70,7 +75,14 @@ class AccountDetails extends Component {
               </Card>
             )}
             <Card>
-              <Button backgroundColor="#1E90FF" clear title="Contact" />
+              <Button
+                backgroundColor="#1E90FF"
+                clear
+                title="Send Request"
+                onPress={() =>
+                  Actions.createServiceRequestForm({ toId: selectedUser.id })
+                }
+              />
             </Card>
           </View>
         )}
