@@ -18,10 +18,10 @@ import AddServicesForm from "./screens/AddServicesForm";
 import AddServiceFeesForm from "./screens/AddServiceFeesForm";
 import History from './screens/History'
 import CreateServiceRequestForm from "./screens/CreateServiceRequestForm";
+import NavScreen from "./screens/NavScreen";
 import MyAccount from "./screens/MyAccount";
 import EditMyAccount from "./screens/EditMyAccount";
 import ChatContainer from "./screens/ChatContainer";
-
 
 
 export default class WashedOut extends Component {
@@ -32,7 +32,7 @@ export default class WashedOut extends Component {
           <Provider store={store}>
             <Router>
               <Scene key="root">
-                <Scene component={Test} />
+                <Scene component={Test}/>
                 <Scene
                   key="launchScene"
                   component={LaunchScene}
@@ -103,7 +103,6 @@ export default class WashedOut extends Component {
                   title="Account History"
                   initial={false}
                 />
-
                 <Scene
                   key="myAccount"
                   component={MyAccount}
@@ -116,8 +115,13 @@ export default class WashedOut extends Component {
                   title="Edit My Account"
                   initial={false}
                 />
-                <Scene key="chat" component={ChatContainer} title="Chat" />
+                <Scene 
+                  key="navScreen"
+                  component={NavScreen}
+                  initial={true}
+                  />
 
+                <Scene key="chat" component={ChatContainer} title="Chat" />
               </Scene>
             </Router>
           </Provider>
