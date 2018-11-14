@@ -1,17 +1,14 @@
 import React from "react";
 
-import { Container, Header, Button, Body, Content,Text } from "native-base";
-import { Actions } from 'react-native-router-flux';
+import { Container, Header, Button, Body, Content, Text } from "native-base";
+import { Actions } from "react-native-router-flux";
 import { Font, AppLoading } from "expo";
 
-
 export default class NavScreen extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = { loading: true };
   }
-
 
   async componentWillMount() {
     await Font.loadAsync({
@@ -21,10 +18,9 @@ export default class NavScreen extends React.Component {
     this.setState({ loading: false });
   }
 
-
   render() {
     if (this.state.loading) {
-      return <AppLoading/>
+      return <AppLoading />;
     }
 
     return (
@@ -44,6 +40,17 @@ export default class NavScreen extends React.Component {
               }}
             >
               <Text>MyProfile</Text>
+            </Button>
+            <Button
+              full
+              rounded
+              primary
+              style={{ margin: 30 }}
+              onPress={() => {
+                Actions.feed();
+              }}
+            >
+              <Text>Feed</Text>
             </Button>
             <Button
               full
