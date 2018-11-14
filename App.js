@@ -16,7 +16,11 @@ import LoginContainer from "./screens/LoginContainer";
 import AddLocationForm from "./screens/AddLocationForm";
 import AddServicesForm from "./screens/AddServicesForm";
 import AddServiceFeesForm from "./screens/AddServiceFeesForm";
+
+import History from './screens/History'
+
 import CreateServiceRequestForm from "./screens/CreateServiceRequestForm";
+
 
 export default class WashedOut extends Component {
   render() {
@@ -38,7 +42,11 @@ export default class WashedOut extends Component {
                   component={SignUpContainer}
                   title="Sign Up"
                 />
-                <Scene key="login" component={LoginContainer} title="Sign Up" />
+                <Scene 
+                key="login" 
+                component={LoginContainer} 
+                title="Sign In" />
+
                 <Scene
                   key="accountDetails"
                   component={AccountDetails}
@@ -77,9 +85,21 @@ export default class WashedOut extends Component {
                   hideNavBar
                 />
                 <Scene
-                  key="createServiceRequestForm"
+                  key="addServiceFeesForm"
+                  component={AddServiceFeesForm}
+                  title="Add Services"
+                  hideNavBar
+                />
+                 <Scene 
+                   key="createServiceRequestForm"
                   component={CreateServiceRequestForm}
                   title="Create Service Request"
+                  />            
+                <Scene
+                  key="history"
+                  component={History}
+                  title="Account History"
+                  initial={false}
                 />
               </Scene>
             </Router>
