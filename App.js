@@ -20,7 +20,11 @@ import AddServiceFeesForm from "./screens/AddServiceFeesForm";
 import History from './screens/History'
 
 import CreateServiceRequestForm from "./screens/CreateServiceRequestForm";
+
+import MyAccount from "./screens/MyAccount";
+
 import ChatContainer from "./screens/ChatContainer";
+
 
 
 export default class WashedOut extends Component {
@@ -36,17 +40,17 @@ export default class WashedOut extends Component {
                   key="launchScene"
                   component={LaunchScene}
                   title="Home"
-                  initial={true}
+                  initial={false}
                 />
                 <Scene
                   key="signUp"
                   component={SignUpContainer}
                   title="Sign Up"
                 />
-                <Scene 
-                key="login" 
-                component={LoginContainer} 
-                title="Sign In" />
+                <Scene
+                  key="login"
+                  component={LoginContainer}
+                  title="Sign In" />
 
                 <Scene
                   key="accountDetails"
@@ -91,18 +95,26 @@ export default class WashedOut extends Component {
                   title="Add Services"
                   hideNavBar
                 />
-                 <Scene 
-                   key="createServiceRequestForm"
+                <Scene
+                  key="createServiceRequestForm"
                   component={CreateServiceRequestForm}
                   title="Create Service Request"
-                  />            
+                />
                 <Scene
                   key="history"
                   component={History}
                   title="Account History"
                   initial={false}
                 />
+
+                <Scene
+                  key="myAccount"
+                  component={MyAccount}
+                  title="My Account"
+                  initial={false}
+                />
                 <Scene key="chat" component={ChatContainer} title="Chat" />
+
               </Scene>
             </Router>
           </Provider>
