@@ -6,7 +6,7 @@ import styles from "./HeaderComponent.styles";
 import { Avatar } from "react-native-elements";
 import { Actions } from "react-native-router-flux";
 
-export const HeaderComponent = ({ logo, picture }) => {
+const HeaderComponent = ({ logo, picture }) => {
   return (
     <Header style={{ backgroundColor: "#42b6f4" }} iosBarStyle="light-content">
       <Left>
