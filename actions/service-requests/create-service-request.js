@@ -7,7 +7,6 @@ export default (fromId, toId, serviceRequest) => {
   return function(dispatch) {
     queryCreateServiceRequest(fromId, toId, serviceRequest)
       .then(res => {
-        console.log(res);
         dispatch({
           type: CREATED_SERVICE_REQUEST,
           payload: res.data.createServiceRequest
@@ -34,7 +33,7 @@ function queryCreateServiceRequest(fromId, toId, serviceRequest) {
         $fromId: Int!
         $toId: Int!
         $items: [ItemInput!]!
-        $specifications: String!
+        $specifications: String
         $services: ServicesInput
         $additionalCharge: Float
       ) {
@@ -47,16 +46,24 @@ function queryCreateServiceRequest(fromId, toId, serviceRequest) {
           additionalCharge: $additionalCharge
         ) {
           from {
+            id
             fullName
           }
           to {
+            id
             fullName
           }
           items {
             itemType
+            count
           }
           services {
             washing
+            drying
+            ironing
+            folding
+            delivery
+            pickup
           }
           additionalCharge
         }

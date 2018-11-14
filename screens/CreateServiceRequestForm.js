@@ -52,6 +52,12 @@ class CreateServiceRequestForm extends Component {
     };
   }
 
+  componentDidUpdate() {
+    if (this.props.serviceRequest) {
+      Actions.chat();
+    }
+  }
+
   onSubmit() {
     const serviceRequest = this.state.newServiceRequest;
     if (!serviceRequest) return;
@@ -96,7 +102,7 @@ class CreateServiceRequestForm extends Component {
 }
 
 const mdtp = { createServiceRequest };
-const mstp = ({ user }) => ({ user });
+const mstp = ({ user, serviceRequest }) => ({ user, serviceRequest });
 
 export default connect(
   mstp,
