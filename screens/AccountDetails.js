@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View } from "react-native";
 import { Card, Rating, Avatar, Text, Button } from "react-native-elements";
+import { ScrollView } from "react-native-gesture-handler";
 import fetchAccountDetails from "../actions/users/fetch-account-details";
 import clearAccountDetails from "../actions/users/clear-account-details";
 import { Action } from "rxjs/internal/scheduler/Action";
@@ -29,8 +30,10 @@ class AccountDetails extends Component {
     const services = !!this.props.selectedUser ? this.filterServices() : null;
     const selectedUser = this.props.selectedUser || false;
     return (
-      <View>
+
+       <ScrollView>
         {selectedUser && (
+
           <View>
             <Card>
               <View style={{ flexDirection: "row" }}>
@@ -83,7 +86,7 @@ class AccountDetails extends Component {
             </Card>
           </View>
         )}
-      </View>
+      </ScrollView>
     );
   }
 }
