@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-//
-import createComment from "../actions/comments/create-comment";
-//
+import sendMessage from "../actions/messages/send-message";
 import t from "tcomb-form-native";
-import Comment, { formOptions } from "../models/Comment";
+import Message, { formOptions } from "../models/Message";
 import { View } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import { Text } from "react-native";
@@ -34,7 +32,7 @@ const styles = {
   }
 };
 
-class TestCreateComment extends Component {
+class CreateMessageForm extends Component {
   constructor(props) {
     super(props);
 
@@ -44,10 +42,9 @@ class TestCreateComment extends Component {
     this.ratingCompleted = this.ratingCompleted.bind(this);
 
     this.state = {
-      newComment: {
+      newMessage: {
         content: "hello this is a comment"
-      },
-      rating: 3.6
+      }
     };
   }
 
@@ -56,9 +53,9 @@ class TestCreateComment extends Component {
   }
 
   onSubmit() {
-    const comment = this.state.newComment;
+    const comment = this.state.newMessage;
     if (!comment) return;
-    this.props.createComment(this.props.user.id, 1, {
+    this.props.sendMessage(this.props.user.id, this.props.selectedUser.id, {
       content: comment.content,
       rating: this.state.rating
     });
@@ -67,12 +64,12 @@ class TestCreateComment extends Component {
 
   clearForm() {
     this.setState({
-      newComment: null
+      newMessage: null
     });
   }
 
-  onChange(newComment) {
-    this.setState({ newComment });
+  onChange(newMessage) {
+    this.setState({ newMessage });
   }
 
   render() {
@@ -81,22 +78,12 @@ class TestCreateComment extends Component {
     return (
       <View style={styles.view}>
         <KeyboardAvoidingView behavior="padding">
-          <Text style={styles.title}>Test: createComment query</Text>
           <Form
             ref="form"
-            type={Comment}
+            type={Message}
             options={formOptions}
-            value={this.state.newComment}
+            value={this.state.newMessage}
             onChange={this.onChange}
-          />
-          <Rating
-            showRating
-            type="star"
-            fractions={1}
-            imageSize={40}
-            startingValue={rating}
-            onFinishRating={this.ratingCompleted}
-            style={{ paddingVertical: 10 }}
           />
 
           <TouchableHighlight onPress={this.onSubmit} style={styles.button}>
@@ -108,10 +95,13 @@ class TestCreateComment extends Component {
   }
 }
 
-const mdtp = { createComment };
-const mstp = ({ user }) => ({ user });
+const mdtp = { sendMessage };
+const mstp = ({ user, selectedUser }) => ({
+  user,
+  selectedUser
+});
 
 export default connect(
   mstp,
   mdtp
-)(TestCreateComment);
+)(CreateMessageForm);
