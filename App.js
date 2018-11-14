@@ -16,6 +16,7 @@ import LoginContainer from "./screens/LoginContainer";
 import AddLocationForm from "./screens/AddLocationForm";
 import AddServicesForm from "./screens/AddServicesForm";
 import AddServiceFeesForm from "./screens/AddServiceFeesForm";
+import CreateServiceRequestForm from "./screens/CreateServiceRequestForm";
 
 export default class WashedOut extends Component {
   render() {
@@ -74,6 +75,11 @@ export default class WashedOut extends Component {
                   component={AddServiceFeesForm}
                   title="Add Services"
                   hideNavBar
+                />
+                <Scene
+                  key="createServiceRequestForm"
+                  component={CreateServiceRequestForm}
+                  title="Create Service Request"
                 />
               </Scene>
             </Router>
