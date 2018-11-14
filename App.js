@@ -36,7 +36,7 @@ export default class WashedOut extends Component {
                   key="launchScene"
                   component={LaunchScene}
                   title="Home"
-                  initial={false}
+                  initial={true}
                 />
                 <Scene
                   key="signUp"
