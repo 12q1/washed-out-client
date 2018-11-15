@@ -38,19 +38,8 @@ export default class NavScreen extends React.Component {
     return (
       <Container style={{ backgroundColor: "#004466" }}>
         <Content>
-          <Body>
-            <Button
-              style={styles.button}
-              full
-              rounded
-              primary
-              onPress={() => {
-                Actions.myAccount();
-              }}
-            >
-              <Text style={styles.buttonText}>MyProfile</Text>
-            </Button>
-            <Button
+          <Body> 
+           <Button
               style={styles.button}
               full
               rounded
