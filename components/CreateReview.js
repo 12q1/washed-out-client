@@ -7,11 +7,14 @@ import { View } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import { Text } from "react-native";
 import { TouchableHighlight } from "react-native";
+import { Actions } from "react-native-router-flux";
 import { Rating } from "react-native-elements";
 
 const styles = {
-  view: {
-    padding: 20
+  container: {
+    flex:1,
+    padding: 20,
+    backgroundColor:"#0086cb",
   },
   title: {
     fontSize: 18,
@@ -19,16 +22,25 @@ const styles = {
   },
   button: {
     height: 36,
-    borderColor: "#000",
-    borderWidth: 1,
-    borderRadius: 8,
+    backgroundColor: "#004466",
+    borderWidth: 0,
+    margin: 15,
+    width: "80%",
+    borderColor: '#0086cb',
+    borderRadius: 100,
     marginBottom: 10,
-    alignSelf: "stretch",
-    justifyContent: "center"
+    alignSelf: 'center',
+    justifyContent: 'center',
+
   },
   buttonText: {
     fontSize: 18,
-    alignSelf: "center"
+    alignSelf: "center",
+    color:"#ffffff"
+  },
+  rating:{
+    color:"#ffffff",
+    alignSelf:"center"
   }
 };
 
@@ -60,7 +72,8 @@ class CreateReview extends Component {
       content: comment.content,
       rating: this.state.rating
     });
-    this.clearForm();
+    this.clearForm()
+    Actions.feed()
   }
 
   clearForm() {
@@ -77,7 +90,7 @@ class CreateReview extends Component {
     const Form = t.form.Form;
     const rating = this.state.rating;
     return (
-      <View style={styles.view}>
+      <View style={styles.container}>
         <KeyboardAvoidingView behavior="padding">
           <Form
             ref="form"
@@ -85,17 +98,17 @@ class CreateReview extends Component {
             options={formOptions}
             value={this.state.newComment}
             onChange={this.onChange}
+            style={styles.form}
           />
           <Rating
+            style={styles.rating}
             showRating
             type="star"
             fractions={1}
             imageSize={40}
             startingValue={rating}
             onFinishRating={this.ratingCompleted}
-            style={{ paddingVertical: 10 }}
           />
-
           <TouchableHighlight onPress={this.onSubmit} style={styles.button}>
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableHighlight>
