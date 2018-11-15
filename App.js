@@ -42,7 +42,7 @@ t.form.Form.stylesheet.textboxView.error.borderBottomWidth = 1;
 t.form.Form.stylesheet.textboxView.normal.marginBottom = 5;
 t.form.Form.stylesheet.textboxView.error.marginBottom = 5;
 
-
+//change the form into material UI
 
 
 
@@ -66,6 +66,7 @@ export default class WashedOut extends Component {
                   hideNavBar
                   initial={true}
                 />
+
                 <Scene
                   key="signUp"
                   component={SignUpContainer}
@@ -151,10 +152,6 @@ export default class WashedOut extends Component {
                   component={NavScreen}
                   />
          
-
-//                   title="Navigator"
-//                 />
-
                 <Scene
                   key="createReviewForm"
                   component={CreateReview}
