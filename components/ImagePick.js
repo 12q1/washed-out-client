@@ -28,7 +28,7 @@ export default class ImagePick extends React.Component {
 
     if (!result.cancelled) {
       console.log(this.props.setImage)
-      this.setState({ image: result.uri });
+      this.setState({ picture: result.uri });
 
       let base64Img = `data:image/jpg;base64,${result.base64}`;
 
