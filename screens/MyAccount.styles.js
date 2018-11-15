@@ -8,15 +8,18 @@ export default StyleSheet.create({
     },
     container: {
         flex: 1,
+        backgroundColor: "#004466",
         justifyContent: 'center',
         paddingHorizontal: 20,
         paddingTop: 20,
+        alignSelf: 'stretch',
     },
     title: {
         fontSize: 30,
         alignSelf: 'center',
         marginBottom: 30
     },
+
     buttonText: {
         fontSize: 18,
         color: 'white',
@@ -24,12 +27,13 @@ export default StyleSheet.create({
     },
     button: {
         height: 36,
-        backgroundColor: '#48BBEC',
-        borderColor: '#48BBEC',
+        backgroundColor: "#0086cb",
+        borderColor: "#0086cb",
         borderWidth: 1,
         borderRadius: 8,
         marginBottom: 10,
-        alignSelf: 'stretch',
+        width: "80%",
+        alignSelf: 'center',
         justifyContent: 'center'
     },
 });
