@@ -11,8 +11,11 @@ import {
 import fetchFeed from "../actions/users/fetch-feed";
 import { HeaderComponent } from "./HeaderComponent";
 import "./HeaderComponent.styles";
+import { Rating } from 'react-native-elements'
 import { connect } from "react-redux";
 import { Actions } from "react-native-router-flux";
+
+const STAR_IMAGE=require('../assets/star2.png')
 
 class FeedContainer extends Component {
   componentDidMount() {
@@ -56,38 +59,47 @@ class FeedContainer extends Component {
     return (
       <SafeAreaView>
         {this.props.feed && (
-          <List containerStyle={{ 
-            borderTopWidth: 0, 
-            borderBottomWidth: 0,
-            backgroundColor: "#004466",
-            }}>
+          <List
+            containerStyle={{
+              borderTopWidth: 0,
+              borderBottomWidth: 0,
+              backgroundColor: "#004466"
+            }}
+          >
             {/* does this work? <SearchBar placeholder="Type Here..." lightTheme round /> */}
             <ScrollView>
-            <FlatList
-              data={this.props.feed}
-              renderItem={({ item }) => {
-                return (
-                  <ListItem
-                    titleStyle={{color:"white"}}
-                    key={item.id}
-                    onPress={() =>
-                      setTimeout(() => {
-                        Actions.accountDetails({ selectedUserId: item.id });
-                      }, 200)
-                    }
-                    keyExtractor={item.id}
-                    title={`${item.fullName}`}
-                    avatar={{ uri: item.picture }}
-                    containerStyle={{ borderBottomWidth: 0 }}
-                  />
-              
-                );
-              }}
-              keyExtractor={item => item.title}
-              ItemSeparatorComponent={this.renderSeparator}
-              ListHeaderComponent={this.renderHeader}
-              ListFooterComponent={this.renderFooter}
-            />
+              <FlatList
+                data={this.props.feed}
+                renderItem={({ item }) => {
+                  return (
+                    <ListItem
+                      titleStyle={{ color: "white" }}
+                      key={item.id}
+                      onPress={() =>
+                        setTimeout(() => {
+                          Actions.accountDetails({ selectedUserId: item.id });
+                        }, 200)
+                      }
+                      keyExtractor={item.id}
+                      title={`${item.fullName}`}
+                      subtitle={<Rating 
+                      type='custom'
+                      ratingImage={STAR_IMAGE}
+                      ratingColor='#ffffff'
+                      ratingBackgroundColor='#004466'
+                      imageSize={15} 
+                      readonly startingValue={item.rating}/>}
+                      avatar={{ uri: item.picture }}
+                      containerStyle={{ borderBottomWidth: 0 }}
+                      roundAvatar
+                    />
+                  );
+                }}
+                keyExtractor={item => item.title}
+                ItemSeparatorComponent={this.renderSeparator}
+                ListHeaderComponent={this.renderHeader}
+                ListFooterComponent={this.renderFooter}
+              />
             </ScrollView>
           </List>
         )}

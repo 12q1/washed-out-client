@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import fetchAccountDetails from "../actions/users/fetch-account-details";
 import clearAccountDetails from "../actions/users/clear-account-details";
 import { View, Text, TouchableHighlight } from 'react-native';
-import { Avatar, List, ListItem, Rating } from 'react-native-elements';
+import { Avatar, List, ListItem, Rating, Divider } from 'react-native-elements';
 import styles from './MyAccount.styles';
 import { connect } from "react-redux";
 import { Actions } from 'react-native-router-flux';
@@ -36,30 +36,61 @@ class MyAccount extends Component {
             <ScrollView>
                 <View style={styles.container}>
                     <Avatar
-                        style={{ justifyContent: "flex-start" }}
+                        containerStyle={{ flex: 1, alignSelf: 'center' }}
                         large
                         rounded
                         source={{ uri: selectedUser.picture }}
                     />
-                    <Text> Name: {selectedUser.fullName} </Text>
-                    <Text> Status: {selectedUser.status} </Text>
-                    <Text> Location:</Text>
-                    <Text> Rating:</Text>
+                    <Text style={{ color: 'white', alignSelf: 'center', fontSize: 20 }}> Name: {selectedUser.fullName} </Text>
+                    <Text style={{ color: 'white', alignSelf: 'center' }}> Status: {selectedUser.status} </Text>
+                    <Text style={{ color: 'white', alignSelf: 'center' }}> Location:</Text>
+                    <Text style={{ color: 'white', alignSelf: 'center' }}> Rating:</Text>
                     <Rating
                         imageSize={20}
                         readonly
                         startingValue={selectedUser.rating}
+                        style={{ backgroundColor: "#004466", alignSelf: 'center' }}
                     />
-                    <Text> Services I can provide:</Text>
-                    <List>
-                        {!!services && (services.map((x, i) => { return <ListItem key={i} hideChevron title={x} subtitle={`starting from ${selectedUser.serviceFees[x]}€`} /> }))}
+
+                    <Text style={{ color: 'white', alignSelf: 'center' }}> Services I can provide:</Text>
+                    <List containerStyle={{
+                        borderTopWidth: 0,
+                        borderBottomWidth: 0,
+                        backgroundColor: "#004466"
+                    }}>
+                        {!!services && (services.map((x, i) => {
+                            return <ListItem titleStyle={{ color: "white" }}
+                                key={i} hideChevron title={x}
+                                subtitle={`starting from ${selectedUser.serviceFees[x]}€`} />
+                        }))}
                     </List>
                     <TouchableHighlight
                         style={styles.button}
-                        onPress={Actions.editMyAccount}
+                        onPress={Actions.addInfoForm}
                         underlayColor="black"
                     >
-                        <Text style={styles.buttonText}>Edit Your Details</Text>
+                        <Text style={styles.buttonText}>Edit Your Personal Details</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                        style={styles.button}
+                        onPress={Actions.addLocationForm}
+                        underlayColor="black"
+                    >
+                        <Text style={styles.buttonText}>Edit Your Location Details</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                        style={styles.button}
+                        onPress={Actions.addServicesForm}
+                        underlayColor="black"
+                    >
+                        <Text style={styles.buttonText}>Edit Your Service Details</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                        style={styles.button}
+                        onPress={Actions.addServiceFeesForm}
+                        underlayColor="black"
+                    >
+                        <Text style={styles.buttonText}>Edit Your Service Fees</Text>
                     </TouchableHighlight>
                 </View>
             </ScrollView>
