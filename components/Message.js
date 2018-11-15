@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text } from "react-native";
 
 export default function(props) {
-  console.log(props.message);
   return (
     <View>
       {props.message.status === "sent" && (

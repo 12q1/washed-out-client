@@ -6,7 +6,7 @@ import signUp from "../actions/users/sign-up";
 import t from "tcomb-form-native";
 import { UserSignUp, formOptions } from "../models/User";
 import styles from "./SignUp.styles";
-import { View } from "react-native";
+import { View, AsyncStorage } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import { Text } from "react-native";
 import { TouchableHighlight } from "react-native";
@@ -52,7 +52,7 @@ class SignUpContainer extends Component {
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
-          <Text style={styles.title}>Sign up for Washed Out</Text>
+          <Text style={styles.title}>Sign Up</Text>
           <Form
             ref="form"
             type={UserSignUp}

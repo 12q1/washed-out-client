@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import createServiceRequest from "../actions/service-requests/create-service-request";
 import t from "tcomb-form-native";
-import ServiceRequest, { formOptions } from "../models/ServiceRequest";
+import getServiceRequestModel from "../models/ServiceRequest";
 import { View } from "react-native";
 import { ScrollView } from "react-native";
 import { Text } from "react-native";
@@ -47,6 +47,14 @@ class CreateServiceRequestForm extends Component {
     this.clearForm = this.clearForm.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
+    const { formOptions, ServiceRequest } = getServiceRequestModel(
+      this.props.services,
+      this.props.serviceFees
+    );
+
+    this.formOptions = formOptions;
+    this.ServiceRequest = ServiceRequest;
+
     this.state = {
       newServiceRequest: null
     };
@@ -81,6 +89,8 @@ class CreateServiceRequestForm extends Component {
 
   render() {
     const Form = t.form.Form;
+    const formOptions = this.formOptions;
+    const ServiceRequest = this.ServiceRequest;
     return (
       <View style={styles.container}>
         <ScrollView>

@@ -8,7 +8,6 @@ export default (state = null, { type, payload }) => {
         ? [...state, JSON.parse(JSON.stringify(payload))]
         : [JSON.parse(JSON.stringify(payload))];
     case FETCHED_MESSAGES:
-      console.log(payload);
       return JSON.parse(JSON.stringify(payload));
     default:
       return state;

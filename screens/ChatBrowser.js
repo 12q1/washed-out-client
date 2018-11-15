@@ -5,10 +5,9 @@ import {
   Text,
   FlatList,
   ActivityIndicator,
-  SafeAreaView,
-  ScrollView
+  SafeAreaView
 } from "react-native";
-import fetchFeed from "../actions/users/fetch-feed";
+import fetchChats from "../actions/chats/fetch-chats";
 import { HeaderComponent } from "./HeaderComponent";
 import "./HeaderComponent.styles";
 import { connect } from "react-redux";
@@ -16,8 +15,7 @@ import { Actions } from "react-native-router-flux";
 
 class FeedContainer extends Component {
   componentDidMount() {
-    console.log(this.props.user.id);
-    this.props.fetchFeed(this.props.user.id);
+    this.props.fetchChats(this.props.user.id);
   }
 
   renderSeparator = () => {
@@ -37,42 +35,22 @@ class FeedContainer extends Component {
     return <HeaderComponent picture={picture} />;
   };
 
-  renderFooter = () => {
-    if (this.props.feed) return null;
-    return (
-      <View
-        style={{
-          paddingVertical: 20,
-          borderTopWidth: 1,
-          borderColor: "#CED0CE"
-        }}
-      >
-        <ActivityIndicator animating size="large" />
-      </View>
-    );
-  };
-
   render() {
     return (
       <SafeAreaView>
-        {this.props.feed && (
-          <List containerStyle={{ 
-            borderTopWidth: 0, 
-            borderBottomWidth: 0,
-            backgroundColor: "#004466",
-            }}>
-            {/* does this work? <SearchBar placeholder="Type Here..." lightTheme round /> */}
-            <ScrollView>
+        {this.props.chats && (
+          <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+            <SearchBar placeholder="Type Here..." lightTheme round />
             <FlatList
-              data={this.props.feed}
+              data={this.props.chats}
               renderItem={({ item }) => {
                 return (
                   <ListItem
-                    titleStyle={{color:"white"}}
+                    roundAvatar
                     key={item.id}
                     onPress={() =>
                       setTimeout(() => {
-                        Actions.accountDetails({ selectedUserId: item.id });
+                        Actions.chat({ selectedUserId: item.id });
                       }, 200)
                     }
                     keyExtractor={item.id}
@@ -80,15 +58,11 @@ class FeedContainer extends Component {
                     avatar={{ uri: item.picture }}
                     containerStyle={{ borderBottomWidth: 0 }}
                   />
-              
                 );
               }}
-              keyExtractor={item => item.title}
               ItemSeparatorComponent={this.renderSeparator}
               ListHeaderComponent={this.renderHeader}
-              ListFooterComponent={this.renderFooter}
             />
-            </ScrollView>
           </List>
         )}
       </SafeAreaView>
@@ -96,8 +70,8 @@ class FeedContainer extends Component {
   }
 }
 
-const mstp = ({ feed, user }) => ({ feed, user });
-const mdtp = { fetchFeed };
+const mstp = ({ chats, user }) => ({ chats, user });
+const mdtp = { fetchChats };
 
 export default connect(
   mstp,

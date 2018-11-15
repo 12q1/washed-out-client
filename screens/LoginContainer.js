@@ -6,7 +6,7 @@ import login from "../actions/users/sign-in";
 import t from "tcomb-form-native";
 import { formOptions, UserSignIn } from "../models/User";
 import styles from "./SignUp.styles";
-import { View } from "react-native";
+import { View, AsyncStorage } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import { Text } from "react-native";
 import { TouchableHighlight } from "react-native";
@@ -31,8 +31,8 @@ class LoginContainer extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props.user);
     if (this.props.user && this.props.user.token) {
+      AsyncStorage.setItem("token", this.props.user.token);
       Actions.feed();
     }
   }
@@ -51,7 +51,7 @@ class LoginContainer extends Component {
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
-          <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>Login</Text>
           <Form
             ref="form"
             type={UserSignIn}
@@ -65,7 +65,7 @@ class LoginContainer extends Component {
             onPress={this.onSubmit}
             underlayColor="black"
           >
-            <Text style={styles.buttonText}>Login</Text>
+            <Text style={styles.buttonText}>Done</Text>
           </TouchableHighlight>
         </KeyboardAvoidingView>
       </View>

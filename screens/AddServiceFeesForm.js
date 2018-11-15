@@ -9,35 +9,7 @@ import { TouchableHighlight } from "react-native";
 import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native";
 import { Actions } from "react-native-router-flux";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 20,
-    paddingTop: 20
-  },
-  title: {
-    fontSize: 30,
-    alignSelf: "center",
-    marginBottom: 30
-  },
-  buttonText: {
-    fontSize: 18,
-    color: "white",
-    alignSelf: "center"
-  },
-  button: {
-    height: 36,
-    backgroundColor: "#48BBEC",
-    borderColor: "#48BBEC",
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    alignSelf: "stretch",
-    justifyContent: "center"
-  }
-});
+import styles from "../screens/SignUp.styles";
 
 class AddServiceFeesForm extends Component {
   constructor(props) {
@@ -48,7 +20,6 @@ class AddServiceFeesForm extends Component {
     const { ServiceFees, formOptions } = getServiceFeesModel(
       this.props.user.services
     );
-    console.log(ServiceFees, formOptions);
     this.ServiceFees = ServiceFees;
     this.formOptions = formOptions;
     this.state = {
@@ -59,7 +30,7 @@ class AddServiceFeesForm extends Component {
   componentDidUpdate() {
     console.log(this.props.user);
     if (this.props.user.serviceFees && this.props.user.serviceFees.set) {
-      Actions.feed();
+      Actions.login();
     }
   }
 

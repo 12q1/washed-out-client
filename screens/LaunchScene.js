@@ -1,7 +1,8 @@
 "use strict";
 
 import React, { Component } from "react";
-import { View, Image } from "react-native";
+import { View, Image} from "react-native";
+import {Divider} from 'react-native-elements'
 import Button from "apsl-react-native-button";
 import styles from "./LaunchScene.styles";
 import { Actions } from "react-native-router-flux";
@@ -34,11 +35,9 @@ export default class LaunchScene extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.bgWrapper}>
-          <Image source={require("../Img/bg.png")} style={styles.bg} />
         </View>
 
-        <Image source={require("../Img/logo.png")} style={styles.img} />
-
+        <Image source={require("../assets/washed-out-assets/logo.png")} style={styles.img} />
         <Button
           style={styles.btn}
           textStyle={{ fontSize: 18, color: "white", fontWeight: "bold" }}
