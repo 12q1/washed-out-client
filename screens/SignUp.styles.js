@@ -26,13 +26,15 @@ export default StyleSheet.create({
     },
     button: {
         height: 36,
-        backgroundColor: '#0086cb',
+        backgroundColor: "#0086cb",
+        borderWidth: 0,
+        margin: 15,
+        width: "80%",
         borderColor: '#0086cb',
-        borderWidth: 1,
-        borderRadius: 8,
+        borderRadius: 100,
         marginBottom: 10,
         alignSelf: 'stretch',
         justifyContent: 'center'
     },
-    
+
 });

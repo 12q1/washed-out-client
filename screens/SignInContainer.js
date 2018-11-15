@@ -71,7 +71,7 @@ class SignInContainer extends Component {
             onPress={this.onSubmit}
             underlayColor="black"
           >
-            <Text style={styles.buttonText}>Login</Text>
+            <Text style={styles.buttonText}>Done</Text>
           </TouchableHighlight>
         </KeyboardAvoidingView>
       </View>

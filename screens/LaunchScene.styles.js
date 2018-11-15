@@ -17,11 +17,12 @@ export default StyleSheet.create({
   },
 
   btn: {
+    borderRadius: 100,
     backgroundColor: "#0086cb",
     alignSelf: "center",
     borderWidth: 0,
     margin: 15,
-    width: 300
+    width: "80%",
   },
 
   img: {
