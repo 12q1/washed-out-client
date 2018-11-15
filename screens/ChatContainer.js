@@ -26,6 +26,7 @@ class ChatContainer extends Component {
               renderItem={({ item }) => {
                 return (
                   <ListItem
+                    titleStyle={{ color: "#000000" }}
                     roundAvatar
                     key={item.id}
                     keyExtractor={item.id}

@@ -81,7 +81,7 @@ export default class NavScreen extends React.Component {
               primary
               style={styles.button}
               onPress={() => {
-                Actions.chat();
+                Actions.chatBrowser();
               }}
             >
               <Text style={styles.buttonText}>Chat</Text>
