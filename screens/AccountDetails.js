@@ -63,11 +63,9 @@ class AccountDetails extends Component {
 
                   <Button backgroundColor= "#42b6f4"
                     color="white"
-                  <Button
-                    style={{ backgroundColor: "#42b6f4" }}
                     title="Add Review"
                     onPress={() => {
-                      Actions.createReviewForm({ toId: selectedUser.id });
+                      Actions.createReviewForm({ toId: selectedUser.id })
                     }}
                   />
                 </Card>
