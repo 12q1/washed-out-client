@@ -42,7 +42,7 @@ class AccountDetails extends Component {
             <Card>
               <View style={{ flexDirection: "row" }}>
                 <Avatar
-                  style={{ justifyContent: "flex-start", paddingTop:20 }}
+                  containerStyle={{marginTop:30}}
                   large
                   rounded
                   source={{ uri: selectedUser.picture }}
@@ -61,7 +61,8 @@ class AccountDetails extends Component {
                     startingValue={selectedUser.rating}
                   />
                   <Text> Status: {selectedUser.status} </Text>
-                  <Button style={{backgroundColor: "#42b6f4"}}
+                  <Button backgroundColor= "#42b6f4"
+                    color="white"
                     title="Add Review"
                     onPress={()=>{Actions.createReviewForm({toId: selectedUser.id})}}
                   />
