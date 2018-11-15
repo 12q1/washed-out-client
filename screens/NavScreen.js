@@ -1,8 +1,9 @@
 import React from "react";
-
 import { Container, Header, Button, Body, Content, Text } from "native-base";
-import { Actions } from "react-native-router-flux";
+import { Actions } from 'react-native-router-flux';
 import { Font, AppLoading } from "expo";
+
+
 
 export default class NavScreen extends React.Component {
   constructor(props) {
@@ -20,69 +21,31 @@ export default class NavScreen extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <AppLoading />;
+      return <AppLoading />
     }
 
     return (
-      <Container>
-        <Header>
-          <Text> Nav Screen </Text>
-        </Header>
+      <Container style={{ backgroundColor: "#004466" }}>
         <Content>
           <Body>
-            <Button
-              full
-              rounded
-              primary
-              style={{ margin: 30 }}
-              onPress={() => {
-                Actions.myAccount();
-              }}
-            >
+            <Button full rounded primary
+              style={{ margin: 30, backgroundColor: "#0086cb", width: "80%" }}
+              onPress={() => { Actions.myAccount() }}>
               <Text>MyProfile</Text>
             </Button>
-            <Button
-              full
-              rounded
-              primary
-              style={{ margin: 30 }}
-              onPress={() => {
-                Actions.feed();
-              }}
-            >
-              <Text>Feed</Text>
-            </Button>
-            <Button
-              full
-              rounded
-              primary
-              style={{ margin: 30 }}
-              onPress={() => {
-                Actions.history();
-              }}
-            >
+            <Button full rounded primary
+              style={{ margin: 30, backgroundColor: "#0086cb", width: "80%" }}
+              onPress={() => { Actions.history() }}>
               <Text>History</Text>
             </Button>
-            <Button
-              full
-              rounded
-              primary
-              style={{ margin: 30 }}
-              onPress={() => {
-                Actions.chatBrowser();
-              }}
-            >
+            <Button full rounded primary
+              style={{ margin: 30, backgroundColor: "#0086cb", width: "80%" }}
+              onPress={() => { Actions.chat() }}>
               <Text>Chat</Text>
             </Button>
-            <Button
-              full
-              rounded
-              primary
-              style={{ margin: 30 }}
-              onPress={() => {
-                Actions.launchScene();
-              }}
-            >
+            <Button full rounded primary
+              style={{ margin: 30, backgroundColor: "#0086cb", width: "80%" }}
+              onPress={() => { Actions.launchScene() }}>
               <Text>Logout</Text>
             </Button>
           </Body>

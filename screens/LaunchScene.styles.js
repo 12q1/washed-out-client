@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
+    backgroundColor: "#004466",
     flex: 1
   },
 
@@ -16,17 +17,20 @@ export default StyleSheet.create({
   },
 
   btn: {
-    backgroundColor: "#FFADAD",
+    borderRadius: 100,
+    backgroundColor: "#0086cb",
     alignSelf: "center",
     borderWidth: 0,
     margin: 15,
-    width: 300
+    width: "80%",
   },
 
   img: {
+    resizeMode: "contain",
     alignSelf: "center",
-    marginTop: 100,
-    marginBottom: 30
+    marginTop: "30%",
+    marginBottom: 30,
+    width: "80%",
   },
 
   img2: {

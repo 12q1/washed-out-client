@@ -51,7 +51,7 @@ class LoginContainer extends Component {
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
-          <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>Login</Text>
           <Form
             ref="form"
             type={UserSignIn}
@@ -65,7 +65,7 @@ class LoginContainer extends Component {
             onPress={this.onSubmit}
             underlayColor="black"
           >
-            <Text style={styles.buttonText}>Login</Text>
+            <Text style={styles.buttonText}>Done</Text>
           </TouchableHighlight>
         </KeyboardAvoidingView>
       </View>

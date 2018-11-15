@@ -5,7 +5,8 @@ import {
   Text,
   FlatList,
   ActivityIndicator,
-  SafeAreaView
+  SafeAreaView,
+  ScrollView
 } from "react-native";
 import fetchFeed from "../actions/users/fetch-feed";
 import { HeaderComponent } from "./HeaderComponent";
@@ -55,14 +56,19 @@ class FeedContainer extends Component {
     return (
       <SafeAreaView>
         {this.props.feed && (
-          <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
-            <SearchBar placeholder="Type Here..." lightTheme round />
+          <List containerStyle={{ 
+            borderTopWidth: 0, 
+            borderBottomWidth: 0,
+            backgroundColor: "#004466",
+            }}>
+            {/* does this work? <SearchBar placeholder="Type Here..." lightTheme round /> */}
+            <ScrollView>
             <FlatList
               data={this.props.feed}
               renderItem={({ item }) => {
                 return (
                   <ListItem
-                    roundAvatar
+                    titleStyle={{color:"white"}}
                     key={item.id}
                     onPress={() =>
                       setTimeout(() => {
@@ -74,6 +80,7 @@ class FeedContainer extends Component {
                     avatar={{ uri: item.picture }}
                     containerStyle={{ borderBottomWidth: 0 }}
                   />
+              
                 );
               }}
               keyExtractor={item => item.title}
@@ -81,6 +88,7 @@ class FeedContainer extends Component {
               ListHeaderComponent={this.renderHeader}
               ListFooterComponent={this.renderFooter}
             />
+            </ScrollView>
           </List>
         )}
       </SafeAreaView>

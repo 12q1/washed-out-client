@@ -24,19 +24,45 @@ import EditMyAccount from "./screens/EditMyAccount";
 import ChatContainer from "./screens/ChatContainer";
 import ChatBrowser from "./screens/ChatBrowser";
 
+import t from 'tcomb-form-native';
+
+t.form.Form.stylesheet.textbox.normal.color= '#FFFFFF'
+t.form.Form.stylesheet.controlLabel.normal.color= '#FFFFFF'
+t.form.Form.stylesheet.textbox.normal.borderWidth = 0;
+t.form.Form.stylesheet.textbox.error.borderWidth = 0;
+t.form.Form.stylesheet.textbox.normal.marginBottom = 0;
+t.form.Form.stylesheet.textbox.error.marginBottom = 0;
+t.form.Form.stylesheet.textboxView.normal.borderWidth = 0;
+t.form.Form.stylesheet.textboxView.error.borderWidth = 0;
+t.form.Form.stylesheet.textboxView.normal.borderRadius = 0;
+t.form.Form.stylesheet.textboxView.error.borderRadius = 0;
+t.form.Form.stylesheet.textboxView.normal.borderBottomWidth = 1;
+t.form.Form.stylesheet.textboxView.normal.borderBottomColor = "#FFFFFF";
+t.form.Form.stylesheet.textboxView.error.borderBottomWidth = 1;
+t.form.Form.stylesheet.textboxView.normal.marginBottom = 5;
+t.form.Form.stylesheet.textboxView.error.marginBottom = 5;
+//overrides all tcomb forms beneath app.js to materialUI format
+
+
+
 export default class WashedOut extends Component {
   render() {
     return (
       <View style={styles.container}>
         <ApolloProvider client={client}>
           <Provider store={store}>
-            <Router>
-              <Scene key="root">
-                <Scene component={Test} />
+            <Router navigationBarStyle={styles.navBar}
+              titleStyle={styles.navBarTitle}
+              barButtonTextStyle={styles.barButtonTextStyle}
+            >
+              <Scene key="root" headerTintColor="#FFFFFF">
+                <Scene component={Test}/>
+
                 <Scene
                   key="launchScene"
                   component={LaunchScene}
                   title="Home"
+                  hideNavBar
                   initial={true}
                 />
                 <Scene
@@ -44,7 +70,13 @@ export default class WashedOut extends Component {
                   component={SignUpContainer}
                   title="Sign Up"
                 />
-                <Scene key="login" component={LoginContainer} title="Sign In" />
+
+                <Scene
+                  key="login"
+                  component={LoginContainer}
+                  title="Login"
+                  navBarButtonImageColor={styles.leftButtonIconStyle}
+                />
 
                 <Scene
                   key="accountDetails"
@@ -112,8 +144,16 @@ export default class WashedOut extends Component {
                   title="Edit My Account"
                   initial={false}
                 />
-                <Scene key="navScreen" component={NavScreen} />
+
+                <Scene
+                  key="navScreen"
+                  component={NavScreen}
+                  title="Navigator"
+                />
+
+               
                 <Scene key="chatBrowser" component={ChatBrowser} />
+
 
                 <Scene key="chat" component={ChatContainer} title="Chat" />
               </Scene>
