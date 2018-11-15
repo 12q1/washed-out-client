@@ -51,7 +51,7 @@ class LoginContainer extends Component {
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
-        <Text style={styles.title}>Login</Text>
+          <Text style={styles.title}>Login</Text>
           <Form
             ref="form"
             type={UserSignIn}
