@@ -4,7 +4,7 @@ import { AsyncStorage } from "react-native";
 // Create the apollo client
 export default (client = new ApolloClient({
 
-  uri: "http://192.168.0.13:4000/graphql"
+  uri: "http://192.168.0.13:4000/graphql",
   request: async operation => {
     const token = await AsyncStorage.getItem("token");
     operation.setContext({
