@@ -11,8 +11,11 @@ import {
 import fetchFeed from "../actions/users/fetch-feed";
 import { HeaderComponent } from "./HeaderComponent";
 import "./HeaderComponent.styles";
+import { Rating } from 'react-native-elements'
 import { connect } from "react-redux";
 import { Actions } from "react-native-router-flux";
+
+const STAR_IMAGE=require('../assets/star2.png')
 
 class FeedContainer extends Component {
   componentDidMount() {
@@ -79,6 +82,13 @@ class FeedContainer extends Component {
                       }
                       keyExtractor={item.id}
                       title={`${item.fullName}`}
+                      subtitle={<Rating 
+                      type='custom'
+                      ratingImage={STAR_IMAGE}
+                      ratingColor='#ffffff'
+                      ratingBackgroundColor='#004466'
+                      imageSize={15} 
+                      readonly startingValue={item.rating}/>}
                       avatar={{ uri: item.picture }}
                       containerStyle={{ borderBottomWidth: 0 }}
                       roundAvatar

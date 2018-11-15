@@ -19,7 +19,7 @@ export const HeaderComponent = ({ logo, picture }) => {
       <Body>
         {(logo && (
           <Image resizeMode="contain" style={styles.logo} source={logo} />
-        )) || <Text style={styles.headerText}>Nearby</Text>}
+        )) || <Text style={styles.headerText}>Home</Text>}
       </Body>
 
       <Right>
