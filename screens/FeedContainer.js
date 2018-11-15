@@ -69,7 +69,6 @@ class FeedContainer extends Component {
                 return (
                   <ListItem
                     titleStyle={{color:"white"}}
-                    color= "white"
                     key={item.id}
                     onPress={() =>
                       setTimeout(() => {

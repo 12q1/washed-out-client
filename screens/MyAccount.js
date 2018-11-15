@@ -34,34 +34,34 @@ class MyAccount extends Component {
         const selectedUser = this.props.selectedUser || false;
         return (
             <ScrollView>
-            <View style={styles.container}>
-                <Avatar
-                    style={{ justifyContent: "flex-start" }}
-                    large
-                    rounded
-                    source={{ uri: selectedUser.picture }}
-                />
-                <Text> Name: {selectedUser.fullName} </Text>
-                <Text> Status: {selectedUser.status} </Text>
-                <Text> Location:</Text>
-                <Text> Rating:</Text>
-                <Rating
-                    imageSize={20}
-                    readonly
-                    startingValue={selectedUser.rating}
-                  />
-                <Text> Services I can provide:</Text>
-                <List>
-                {!!services && (services.map((x,i) => {return <ListItem key={i} hideChevron title={x} subtitle={`starting from ${selectedUser.serviceFees[x]}€`}/>}))}
-                </List>
-                <TouchableHighlight
-                    style={styles.button}
-                    onPress={Actions.editMyAccount}
-                    underlayColor="black"
-                >
-                    <Text style={styles.buttonText}>Edit Your Details</Text>
-                </TouchableHighlight>
-            </View>
+                <View style={styles.container}>
+                    <Avatar
+                        style={{ justifyContent: "flex-start" }}
+                        large
+                        rounded
+                        source={{ uri: selectedUser.picture }}
+                    />
+                    <Text> Name: {selectedUser.fullName} </Text>
+                    <Text> Status: {selectedUser.status} </Text>
+                    <Text> Location:</Text>
+                    <Text> Rating:</Text>
+                    <Rating
+                        imageSize={20}
+                        readonly
+                        startingValue={selectedUser.rating}
+                    />
+                    <Text> Services I can provide:</Text>
+                    <List>
+                        {!!services && (services.map((x, i) => { return <ListItem key={i} hideChevron title={x} subtitle={`starting from ${selectedUser.serviceFees[x]}€`} /> }))}
+                    </List>
+                    <TouchableHighlight
+                        style={styles.button}
+                        onPress={Actions.editMyAccount}
+                        underlayColor="black"
+                    >
+                        <Text style={styles.buttonText}>Edit Your Details</Text>
+                    </TouchableHighlight>
+                </View>
             </ScrollView>
         )
     }

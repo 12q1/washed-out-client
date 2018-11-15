@@ -141,6 +141,7 @@ export default class WashedOut extends Component {
                 <Scene
                   key="navScreen"
                   component={NavScreen}
+                  title="Navigator"
                 />
 
                 <Scene key="chat" component={ChatContainer} title="Chat" />
