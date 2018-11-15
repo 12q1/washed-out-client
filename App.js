@@ -152,8 +152,8 @@ export default class WashedOut extends Component {
                   />
          
 
-                  title="Navigator"
-                />
+//                   title="Navigator"
+//                 />
 
                 <Scene
                   key="createReviewForm"
