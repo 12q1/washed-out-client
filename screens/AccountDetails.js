@@ -21,9 +21,10 @@ class AccountDetails extends Component {
     );
   }
 
-  getComments(){
-    return 
+  getComments = () =>{
+    return  this.props.selectedUser.comments
   }
+  
 
   componentWillUnmount() {
     this.props.clearAccountDetails();
@@ -31,7 +32,7 @@ class AccountDetails extends Component {
 
   render() {
     const services = !!this.props.selectedUser ? this.filterServices() : null;
-    const comments = !!this.props.selectedUser ? this.props.selectedUser.comments: null;
+    const comments = !!this.props.selectedUser ? this.getComments(): null;
     const selectedUser = this.props.selectedUser || false;
     console.log(comments)
     return (
@@ -42,7 +43,7 @@ class AccountDetails extends Component {
             <Card>
               <View style={{ flexDirection: "row" }}>
                 <Avatar
-                  style={{ justifyContent: "flex-start" }}
+                  style={{ justifyContent: "flex-start", paddingTop:20 }}
                   large
                   rounded
                   source={{ uri: selectedUser.picture }}
@@ -61,6 +62,10 @@ class AccountDetails extends Component {
                     startingValue={selectedUser.rating}
                   />
                   <Text> Status: {selectedUser.status} </Text>
+                  <Button style={{backgroundColor: "#42b6f4"}}
+                    title="Add Review"
+                    onPress={()=>{Actions.createReviewForm({toId: selectedUser.id})}}
+                  />
                 </Card>
               </View>
             </Card>

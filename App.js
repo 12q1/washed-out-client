@@ -22,6 +22,7 @@ import NavScreen from "./screens/NavScreen";
 import MyAccount from "./screens/MyAccount";
 import EditMyAccount from "./screens/EditMyAccount";
 import ChatContainer from "./screens/ChatContainer";
+import CreateReview from "./components/CreateReview";
 
 
 export default class WashedOut extends Component {
@@ -119,7 +120,11 @@ export default class WashedOut extends Component {
                   key="navScreen"
                   component={NavScreen}
                   />
-
+                <Scene
+                  key="createReviewForm"
+                  component={CreateReview}
+                  title="Add Review"
+                />
                 <Scene key="chat" component={ChatContainer} title="Chat" />
               </Scene>
             </Router>
