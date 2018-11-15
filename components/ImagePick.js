@@ -4,16 +4,16 @@ import { ImagePicker } from "expo";
 
 export default class ImagePick extends React.Component {
   state = {
-    image: null
+    picture: null
   };
 
   render() {
-    let { image } = this.state;
+    let { picture } = this.state;
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Button title="Edit Your Profile Image" onPress={this.pickImage} />
-        {image && (
-          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+        {picture && (
+          <Image source={{ uri: picture }} style={{ width: 200, height: 200 }} />
         )}
       </View>
     );
@@ -27,7 +27,7 @@ export default class ImagePick extends React.Component {
     });
 
     if (!result.cancelled) {
-      this.setImage(result.uri);
+      console.log(this.props.setImage)
       this.setState({ image: result.uri });
 
       let base64Img = `data:image/jpg;base64,${result.base64}`;
@@ -50,6 +50,7 @@ export default class ImagePick extends React.Component {
         .then(async r => {
           let data = await r.json();
           console.log(data.secure_url);
+          this.props.setImage(data.secure_url);
           return data.secure_url;
         })
         .catch(err => console.log(err));
