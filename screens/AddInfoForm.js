@@ -39,9 +39,9 @@ class AddInfoForm extends Component {
     this.setState({ newInfo });
   }
 
-  setImage(image) {
+  setImage(picture) {
     this.setState({
-      newInfo: this.state.newInfo ? { ...this.state.newInfo, image } : { image }
+      newInfo: this.state.newInfo ? { ...this.state.newInfo, picture } : { picture }
     });
   }
 
