@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Image, Picker } from "react-native";
+import { Text, Image } from "react-native";
 import { Header, Left, Body, Right, Button } from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./HeaderComponent.styles";
@@ -7,7 +7,6 @@ import { Avatar } from "react-native-elements";
 import { Actions } from "react-native-router-flux";
 
 export const HeaderComponent = ({ logo, picture }) => {
-
 
   return (
     <Header style={{ backgroundColor: "#0086cb" }} iosBarStyle="light-content">
@@ -24,7 +23,7 @@ export const HeaderComponent = ({ logo, picture }) => {
 
       <Right>
         <Button transparent>
-          <Avatar rounded source={{ uri: picture }} />
+          <Avatar rounded source={{ uri: picture }} onPress={() => {Actions.myAccount()}} />
         </Button>
       </Right>
     </Header>

@@ -1,4 +1,6 @@
 import React from "react";
+import { Container, Button, Body, Content, Text } from "native-base";
+import { Actions } from 'react-native-router-flux';
 import { Container, Header, Button, Body, Content, Text } from "native-base";
 import { Actions } from "react-native-router-flux";
 import { Font, AppLoading } from "expo";
@@ -39,6 +41,10 @@ export default class NavScreen extends React.Component {
       <Container style={{ backgroundColor: "#004466" }}>
         <Content>
           <Body>
+            <Button full rounded primary
+              style={{ margin: 30, backgroundColor: "#0086cb", width: "80%" }}
+              onPress={() => { Actions.history() }}>
+              <Text>History</Text>
             <Button
               style={styles.button}
               full

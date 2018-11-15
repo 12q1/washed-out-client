@@ -36,7 +36,6 @@ export default class LaunchScene extends Component {
       <View style={styles.container}>
         <View style={styles.bgWrapper}>
         </View>
-
         <Image source={require("../assets/washed-out-assets/logo.png")} style={styles.img} />
         <Button
           style={styles.btn}
