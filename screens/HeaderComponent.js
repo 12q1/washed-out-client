@@ -24,7 +24,7 @@ export const HeaderComponent = ({ logo, picture }) => {
 
       <Right>
         <Button transparent>
-          <Avatar rounded source={{ uri: picture }} />
+          <Avatar rounded source={{ uri: picture }} onPress={() => { Actions.myAccount() }}/>
         </Button>
       </Right>
     </Header>
