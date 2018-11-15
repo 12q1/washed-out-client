@@ -7,7 +7,6 @@ export default function(fromId, toId, message) {
   return function(dispatch) {
     querySendMessage(fromId, toId, message)
       .then(res => {
-        console.log(res);
         dispatch({
           type: CREATED_MESSAGE,
           payload: res.data.messageSave

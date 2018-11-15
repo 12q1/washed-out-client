@@ -5,10 +5,8 @@ export const USER_SIGNED_IN = "USER_SIGNED_IN";
 
 export default user => {
   return dispatch => {
-    console.log(user);
     mutateSignIn(user)
       .then(res => {
-        console.log(res);
         dispatch({
           type: USER_SIGNED_IN,
           payload: res.data.login

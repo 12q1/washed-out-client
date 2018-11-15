@@ -16,12 +16,14 @@ import LoginContainer from "./screens/LoginContainer";
 import AddLocationForm from "./screens/AddLocationForm";
 import AddServicesForm from "./screens/AddServicesForm";
 import AddServiceFeesForm from "./screens/AddServiceFeesForm";
-import History from './screens/History'
+import History from "./screens/History";
 import CreateServiceRequestForm from "./screens/CreateServiceRequestForm";
 import NavScreen from "./screens/NavScreen";
 import MyAccount from "./screens/MyAccount";
 import EditMyAccount from "./screens/EditMyAccount";
 import ChatContainer from "./screens/ChatContainer";
+import ChatBrowser from "./screens/ChatBrowser";
+
 import t from 'tcomb-form-native';
 
 t.form.Form.stylesheet.textbox.normal.color= '#FFFFFF'
@@ -42,6 +44,7 @@ t.form.Form.stylesheet.textboxView.error.marginBottom = 5;
 //overrides all tcomb forms beneath app.js to materialUI format
 
 
+
 export default class WashedOut extends Component {
   render() {
     return (
@@ -54,6 +57,7 @@ export default class WashedOut extends Component {
             >
               <Scene key="root" headerTintColor="#FFFFFF">
                 <Scene component={Test}/>
+
                 <Scene
                   key="launchScene"
                   component={LaunchScene}
@@ -66,12 +70,14 @@ export default class WashedOut extends Component {
                   component={SignUpContainer}
                   title="Sign Up"
                 />
+
                 <Scene
                   key="login"
                   component={LoginContainer}
                   title="Login"
                   navBarButtonImageColor={styles.leftButtonIconStyle}
                 />
+
                 <Scene
                   key="accountDetails"
                   component={AccountDetails}
@@ -138,11 +144,16 @@ export default class WashedOut extends Component {
                   title="Edit My Account"
                   initial={false}
                 />
+
                 <Scene
                   key="navScreen"
                   component={NavScreen}
                   title="Navigator"
                 />
+
+               
+                <Scene key="chatBrowser" component={ChatBrowser} />
+
 
                 <Scene key="chat" component={ChatContainer} title="Chat" />
               </Scene>

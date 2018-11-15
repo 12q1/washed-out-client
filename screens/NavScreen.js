@@ -4,13 +4,12 @@ import { Actions } from 'react-native-router-flux';
 import { Font, AppLoading } from "expo";
 
 
-export default class NavScreen extends React.Component {
 
+export default class NavScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loading: true };
   }
-
 
   async componentWillMount() {
     await Font.loadAsync({
@@ -19,7 +18,6 @@ export default class NavScreen extends React.Component {
     });
     this.setState({ loading: false });
   }
-
 
   render() {
     if (this.state.loading) {
