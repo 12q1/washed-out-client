@@ -7,6 +7,7 @@ import { View } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import { Text } from "react-native";
 import { TouchableHighlight } from "react-native";
+import { Actions } from "react-native-router-flux";
 import { Rating } from "react-native-elements";
 
 const styles = {
@@ -28,7 +29,7 @@ const styles = {
     borderColor: '#0086cb',
     borderRadius: 100,
     marginBottom: 10,
-    alignSelf: 'stretch',
+    alignSelf: 'center',
     justifyContent: 'center',
 
   },
@@ -71,7 +72,8 @@ class CreateReview extends Component {
       content: comment.content,
       rating: this.state.rating
     });
-    this.clearForm();
+    this.clearForm()
+    Actions.feed()
   }
 
   clearForm() {
@@ -99,6 +101,7 @@ class CreateReview extends Component {
             style={styles.form}
           />
           <Rating
+            style={styles.rating}
             showRating
             type="star"
             fractions={1}
