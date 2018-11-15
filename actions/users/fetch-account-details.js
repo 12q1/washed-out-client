@@ -1,5 +1,6 @@
 import { gql } from "apollo-boost";
 import client from "../../Client";
+import { Actions } from "react-native-router-flux";
 
 export const FETCH_ACCOUNT_DETAILS_ERROR = "FETCH_ACCOUNT_DETAILS_ERROR";
 export const FETCHED_ACCOUNT_DETAILS = "FETCHED_ACCOUNT_DETAILS";
