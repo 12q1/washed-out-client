@@ -32,7 +32,7 @@ const styles = {
   }
 };
 
-class TestCreateComment extends Component {
+class CreateReview extends Component {
   constructor(props) {
     super(props);
 
@@ -43,9 +43,9 @@ class TestCreateComment extends Component {
 
     this.state = {
       newComment: {
-        content: "hello this is a comment"
+        content: "Add your review here"
       },
-      rating: 3.6
+      rating: 3
     };
   }
 
@@ -56,7 +56,7 @@ class TestCreateComment extends Component {
   onSubmit() {
     const comment = this.state.newComment;
     if (!comment) return;
-    this.props.createComment(this.props.user.id, 1, {
+    this.props.createComment(this.props.user.id, this.props.toId, {
       content: comment.content,
       rating: this.state.rating
     });
@@ -79,7 +79,6 @@ class TestCreateComment extends Component {
     return (
       <View style={styles.view}>
         <KeyboardAvoidingView behavior="padding">
-          <Text style={styles.title}>Test: createComment query</Text>
           <Form
             ref="form"
             type={Comment}
@@ -112,4 +111,4 @@ const mstp = ({ user }) => ({ user });
 export default connect(
   mstp,
   mdtp
-)(TestCreateComment);
+)(CreateReview);

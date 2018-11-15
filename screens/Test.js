@@ -5,7 +5,7 @@ import TestSetLocation from "../components/TestSetLocation";
 import TestUpdateServices from "../components/TestUpdateServices";
 import TestCreateServiceRequest from "../components/TestCreateServiceRequest";
 import TestUpdateServiceFees from "../components/TestUpdateServiceFees";
-import TestCreateComment from "../components/TestCreateComment";
+import TestCreateComment from "../components/CreateReview";
 
 export default class Test extends Component {
   render() {

@@ -22,8 +22,8 @@ import NavScreen from "./screens/NavScreen";
 import MyAccount from "./screens/MyAccount";
 import EditMyAccount from "./screens/EditMyAccount";
 import ChatContainer from "./screens/ChatContainer";
+import CreateReview from "./components/CreateReview";
 import ChatBrowser from "./screens/ChatBrowser";
-
 import t from 'tcomb-form-native';
 
 t.form.Form.stylesheet.textbox.normal.color= '#FFFFFF'
@@ -41,7 +41,8 @@ t.form.Form.stylesheet.textboxView.normal.borderBottomColor = "#FFFFFF";
 t.form.Form.stylesheet.textboxView.error.borderBottomWidth = 1;
 t.form.Form.stylesheet.textboxView.normal.marginBottom = 5;
 t.form.Form.stylesheet.textboxView.error.marginBottom = 5;
-//overrides all tcomb forms beneath app.js to materialUI format
+
+
 
 
 
@@ -148,13 +149,18 @@ export default class WashedOut extends Component {
                 <Scene
                   key="navScreen"
                   component={NavScreen}
+                  />
+         
+
                   title="Navigator"
                 />
 
-               
+                <Scene
+                  key="createReviewForm"
+                  component={CreateReview}
+                  title="Add Review"
+                />
                 <Scene key="chatBrowser" component={ChatBrowser} />
-
-
                 <Scene key="chat" component={ChatContainer} title="Chat" />
               </Scene>
             </Router>
