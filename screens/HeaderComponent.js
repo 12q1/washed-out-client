@@ -8,7 +8,7 @@ import { Actions } from "react-native-router-flux";
 
 export const HeaderComponent = ({ logo, picture }) => {
   return (
-    <Header style={{ backgroundColor: "#42b6f4" }} iosBarStyle="light-content">
+    <Header style={{ backgroundColor: "#0086cb" }} iosBarStyle="light-content">
       <Left>
         <Button transparent>
           <Icon name="bars" style={styles.icon} onPress={()=>{Actions.navScreen()}}/>
@@ -17,7 +17,7 @@ export const HeaderComponent = ({ logo, picture }) => {
       <Body>
         {(logo && (
           <Image resizeMode="contain" style={styles.logo} source={logo} />
-        )) || <Text style={styles.headerText}>nearby...</Text>}
+        )) || <Text style={styles.headerText}>Nearby</Text>}
       </Body>
 
       <Right>

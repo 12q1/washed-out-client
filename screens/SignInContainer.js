@@ -59,6 +59,7 @@ class SignInContainer extends Component {
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
           <Text style={styles.title}>Login for Washed Out</Text>
           <Form
+            style={styles.form}
             ref="form"
             type={User}
             options={formOptions}
