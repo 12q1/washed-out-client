@@ -1,56 +1,49 @@
 import React, { Component } from "react";
 import fetchMessages from "../actions/messages/fetch-messages";
-import { View, SafeAreaView } from "react-native";
+import { List, ListItem, SearchBar } from "react-native-elements";
+import { View, FlatList } from "react-native";
+import { HeaderComponent } from "./HeaderComponent";
 import { connect } from "react-redux";
-import { Actions } from "react-native-router-flux";
-import Message from "../components/Message";
 import CreateMessageForm from "../components/CreateMessageForm";
-
-const userTest = [
-  {
-    id: 1,
-    fullName: "stefan wullems",
-    picture: "null"
-  },
-  {
-    id: 2,
-    fullName: "someone",
-    picture: "null"
-  }
-];
-
-const comments = [
-  {
-    id: 1,
-    userId: 1,
-    content: "hello"
-  },
-  {
-    id: 2,
-    userId: 1,
-    content: "how are you"
-  },
-  {
-    id: 3,
-    userId: 2,
-    content: "i'm good"
-  }
-];
-
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 class ChatContainer extends Component {
   componentDidMount() {
     this.props.fetchMessages(this.props.user.id, this.props.selectedUserId);
   }
 
+  renderHeader = () => {
+    const picture = this.props.user ? this.props.user.picture : "";
+    return <HeaderComponent picture={picture} />;
+  };
+
   render() {
     return (
-      <SafeAreaView>
-        {this.props.messages &&
-          this.props.messages.map(message => {
-            return <Message user={message.from} message={message} />;
-          })}
-        <CreateMessageForm />
-      </SafeAreaView>
+      <KeyboardAwareScrollView style={{ flex: 1 }}>
+        {this.props.messages && (
+          <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+            <FlatList
+              data={this.props.messages}
+              renderItem={({ item }) => {
+                return (
+                  <ListItem
+                    roundAvatar
+                    key={item.id}
+                    keyExtractor={item.id}
+                    title={`${item.from.fullName}: ${item.content}`}
+                    avatar={{ uri: item.from.picture }}
+                    containerStyle={{ borderBottomWidth: 0 }}
+                    chevronColor="#ffffff"
+                  />
+                );
+              }}
+              ListHeaderComponent={this.renderHeader}
+            />
+          </List>
+        )}
+        <View>
+          <CreateMessageForm selectedUserId={this.props.selectedUserId} />
+        </View>
+      </KeyboardAwareScrollView>
     );
   }
 }

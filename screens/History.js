@@ -31,6 +31,7 @@ export default class History extends Component {
             data={this.state.history}
             renderItem={({ item }) => (
               <ListItem
+                hideChevron
                 title= {`date: ${item.date}       cost: ${item.cost}` }
                 subtitle={` type: ${item.type} `}
               />

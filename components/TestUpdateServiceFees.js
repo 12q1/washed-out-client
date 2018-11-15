@@ -9,29 +9,7 @@ import { View } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import { Text } from "react-native";
 import { TouchableHighlight } from "react-native";
-
-const styles = {
-  view: {
-    padding: 20
-  },
-  title: {
-    fontSize: 18,
-    textAlign: "center"
-  },
-  button: {
-    height: 36,
-    borderColor: "#000",
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    alignSelf: "stretch",
-    justifyContent: "center"
-  },
-  buttonText: {
-    fontSize: 18,
-    alignSelf: "center"
-  }
-};
+import styles from "../screens/SignUp.styles";
 
 class TestUpdateServiceFees extends Component {
   constructor(props) {

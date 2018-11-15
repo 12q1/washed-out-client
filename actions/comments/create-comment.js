@@ -4,10 +4,9 @@ export const CREATE_COMMENT_ERROR = "CREATE_COMMENT_ERROR";
 export const CREATED_COMMENT = "CREATED_COMMENT";
 
 export default (fromId, toId, comment) => {
-  return function(dispatch) {
+  return function(dispatch, getState) {
     queryCreateComment(fromId, toId, comment)
       .then(res => {
-        console.log(res);
         dispatch({
           type: CREATED_COMMENT,
           payload: res.data.createComment
@@ -23,7 +22,6 @@ export default (fromId, toId, comment) => {
 };
 
 function queryCreateComment(fromId, toId, { content, rating }) {
-  console.log(rating);
   return client.mutate({
     variables: {
       fromId,
