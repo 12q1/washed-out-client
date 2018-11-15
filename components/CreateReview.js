@@ -44,6 +44,7 @@ const styles = {
   }
 };
 
+const STAR_IMAGE=require('../assets/star3.png')
 class CreateReview extends Component {
   constructor(props) {
     super(props);
@@ -103,9 +104,11 @@ class CreateReview extends Component {
           <Rating
             style={styles.rating}
             showRating
-            type="star"
-            fractions={1}
-            imageSize={40}
+            type='custom'
+            ratingImage={STAR_IMAGE}
+            ratingColor='#ffffff'
+            ratingBackgroundColor='#0086cb'
+            imageSize={30}
             startingValue={rating}
             onFinishRating={this.ratingCompleted}
           />
